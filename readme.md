@@ -91,3 +91,8 @@ $('.choice').click(function() {
 }); 
 ```
 > I aim to make this look fancier with animation, but for now, this will do.
+
+### Building the Hangman
+> First I tried building the individual components of the hangman using css which I found to be difficult. I then decided to read up on using JS functions working with an HTML Canvas, which so far has been difficult! I have managed to successfully create one line but the x, y coordinates did not seem to be doing what I wanted them to do. For example, it didn't matter whether I put the coordiantes in LineTo() or MoveTo(), it was doing the exact same thing.
+
+> I also wanted to avoid repetition of some of the declarations so I tried to build a function to make the code more DRY, and although the functions run, the line does not show in the canvas. I decided to move on.

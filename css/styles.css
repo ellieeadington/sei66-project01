@@ -58,6 +58,12 @@ header {
     height: 100%;
     padding: 0 5px 0 5px;
 }
+
+#hangman-drawing {
+   /* border: 1px solid black; */
+    height: 250px;
+    width: 250px;
+}
 .choose-letter {
     display: flex;
     flex-direction: column;
@@ -86,13 +92,6 @@ header {
     width:50%;
     border: 1px solid black;
 }
-
-#hangman-drawing {
-  border: 1px solid black;
-  height: 50%;
-  width: 50%;
-}
-
 
 .word-zone {
     display: flex;

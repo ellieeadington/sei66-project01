@@ -66,20 +66,79 @@ $('.choice').click(function() {
 
 // Decided to use canvas and create the hangman in javascript as I was finding it difficult using css
 
-function canvas() {
-const hangman = $('.hangman-drawing');
-const ctx = hangman.getContent('2d');
-ctx.beginPath();
-ctx.strokeStyle = 'black';
-ctx.lineWidth = 4;
-ctx.moveTo(100,100);
-ctx.lineTo(300,100);
-ctx.strokeStyle();
+
+    function draw(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
 }
-canvas();
 
+function circle() {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(400,150,50,0,Math.PI*2,true);
+    ctx.stroke();
 
+}
 
+circle();
 
+//gallows pole
+draw(0,600,0,40);
 
+// gallows top
+draw(0,40,400,40);
+
+// gallows bottom
+draw(0,600,200,600);
+
+// // gallows support
+// draw(400,100,400,40);
+
+// rope
+draw(400,100,400,40);
+
+// neck
+draw(400,200,400,240);
+
+// left arm
+draw(400,240,300,200);
+
+// right arm
+draw(400,240,500,200);
+
+// neck
+draw(400,350,400,240);
+
+// left leg
+draw(400,350,300,450);
+
+// right leg
+draw(400,350,500,450);
+
+// draw = function(fromX, fromY, toX, fromY) {
+//     const canvas = document.querySelector('#hangman-drawing');
+//     const ctx = canvas.getContext('2d');
+//     ctx.strokeStyle = 'black';
+//     ctx.lineWidth = 2;
+//     ctx.beginPath();
+//     ctx.moveTo(fromX, fromY);
+//     ctx.lineTo( toX,  fromY);
+//     ctx.stroke(); 
+// }
+
+// function gallowsBottom() {
+//     draw(10, 0, 10, 200);
+//     console.log("draw");
+// }
+
+// gallowsBottom() 
 
