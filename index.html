@@ -10,60 +10,104 @@
 </head>
 <body>
     <header>
-        <h1 class="header">Hangman</h1>
+        <h1 class="header">Game Header</h1>
     </header>
     <main>
-        <div class="top">
-            <div class="game-info">
-                <div class="round">
-                    <p>Round: []</p>
+
+        <div class="game">
+            <div class="zone-1">
+                <div class="game-info"><h2>Game Info</h2>
+                    <div class="info">
+                        <h3 class="info-desc">Round:</h3>
+                        <h3 class="info-value">1</h3>
+                    </div>
+                    <div class="info">
+                        <h3 class="info-desc">Difficulty: </h3>
+                        <h3 class="info-value">Easy</h3>
+                    </div>
+                    <div class="info">
+                        <h3 class="info-desc">Player:</h3>
+                        <h3 class="info-value">0</h3>
+                        <h3 class="info-desc">Computer:</h3>
+                        <h3 class="info-value">0</h3>
+                    </div>
+                    <div class="info">
+                        <h3 class="info-desc">Lives: </h3>
+                        <h3 class="info-value">❤️❤️❤️❤️❤️❤️❤️❤️</h3>
+                    </div>
                 </div>
-                <div>
-                    <p class="score">Player Score: []</p>
+                <div class="choose-letter">
+                    <h2>Choose Letters</h2>
+                    <div class="letters">
+                        <div class="letter a choice">A</div>
+                        <div class="letter b choice">B</div>
+                        <div class="letter c choice">C</div>
+                        <div class="letter d choice">D</div>
+                        <div class="letter e choice">E</div>
+                        <div class="letter f choice">F</div>
+                        <div class="letter g choice">G</div>
+                        <div class="letter h choice">H</div>
+                        <div class="letter i choice">I</div>
+                        <div class="letter j choice">J</div>
+                        <div class="letter k choice">K</div>
+                        <div class="letter l choice">L</div>
+                        <div class="letter m choice">M</div>
+                        <div class="letter n choice">N</div>
+                        <div class="letter o choice">O</div>
+                        <div class="letter p choice">P</div>
+                        <div class="letter q choice">Q</div>
+                        <div class="letter r choice">R</div>
+                        <div class="letter s choice">S</div>
+                        <div class="letter t choice">T</div>
+                        <div class="letter u choice">U</div>
+                        <div class="letter v choice">V</div>
+                        <div class="letter w choice">W</div>
+                        <div class="letter x choice">X</div>
+                        <div class="letter y choice">Y</div>
+                        <div class="letter z choice">Z</div>
+                    </div>  
                 </div>
             </div>
-            <div>
-                <button class="exit">Exit</button>
-            </div>
+                <div class="zone-2">
+                    <div class="hangman"><h2>Hangman</h2>
+                        <img class="hangman-icon" src="css\images\hangman.png">
+                    </div>
+                    <div class="word-zone">
+                        <h2>Word Zone</h2>
+                        <div class="word">
+                            <div class="letter word-1"></div>
+                            <div class="letter word-2"></div>
+                            <div class="letter word-3"></div>
+                            <div class="letter word-4"></div>
+                            <div class="letter word-5"></div>
+                            <div class="letter word-6"></div>
+                        </div>
+                    </div>
+                    <div class="discard-zone"><h2>Discard Zone</h2>
+                        <div class="discarded-letters">
+                            <div class="letter discard-1"></div>
+                            <div class="letter discard-2"></div>
+                            <div class="letter discard-3"></div>
+                            <div class="letter discard-4"></div>
+                            <div class="letter discard-5"></div>
+                            <div class="letter discard-6"></div>
+                            <div class="letter discard-7"></div>
+                            <div class="letter discard-8"></div>
+                        </div>
+                    </div>
+                </div>
         </div>
-
-        <div clas="game">
-            <div class="hangman">
-                <img clas="hangman-icon" src="css\images\hangman.png">
-            </div>
-        </div>
-
-        <div class="guessing-zone">
-            <form>
-                <input class="box" type="text" value="">
-                <input class="box" type="text" value="">
-                <input class="box" type="text" value="">
-                <input class="box" type="text" value="">
-                <input class="box" type="text" value="">
-                <input class="box" type="text" value="">
-            </form>
-        </div>
-
-        <div class="discard-zone">
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-            <div class="discarded"></div>
-        </div>
-    
-
-
-
-
     </main>
     <footer>
+        <div>
+            <button class="exit">Exit</button>
+        </div>
         <small>Created by Ellie Eadington</small>
     </footer>
-    
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
     <script src="js/arrays.js"></script>
 </body>
 </html>

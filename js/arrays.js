@@ -9,8 +9,64 @@ let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLet
 let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
 
 
+// first i'm going to create my logic for how the game will know when 
+// the player has made a correct guess or an incorrect guess
 
-let fiveLetterWord = randomFive();
+// 1. generate a word
+let sixLetterWord = randomSix().toUpperCase();
+console.log(sixLetterWord);
+
+// 2. The player must pick a letter, so we need to create an event
+// listener so that when the player clicks a letter, it checks the
+// word, then moves to the correct position (positions) or moves to
+// the discard pile. To do this, we will:
+    // get the class of the letter that the player clicks - e.g. (a)
+    // iterate through the word to check where there is a match.
+    // If match - populate the correct div with the letter
+    // If no match - populate the next div in the 'discard' zone with
+//the letter.
+    // Then, hide the letter div in the 'choose letter' zone.
+
+// I added a third class to the letters so that the player can only
+// choose a letter from the 'choose letter' zone.
+
+// First i'm just going to get the letters to end up in the right divs
+// later I will focus on making it look like the whole letter tile
+// is moving to the right place
+
+$('.choice').click(function() {
+
+    let letter = $(this).text();
+
+    for (i = 0; i < sixLetterWord.length; i++) {
+
+        if(sixLetterWord[i] == letter) {
+            $(`.word-${i+1}`).text(letter);
+            $(this).text("");
+        }
+    }
+    console.log("success");
+    console.log(letter);
+
+    
+    if ($(this).text() == "") {
+    }
+        else {
+            $('.discarded-letters div').each(function() {
+
+                if($(this).text() == "") {
+                $($(this)).text(letter);
+                return false;
+                } 
+            });
+        }
+        });     
+        
+ // Above is my first functin       
+
+
+
+
 
 
 
