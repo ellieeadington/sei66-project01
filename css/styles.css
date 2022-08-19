@@ -1,5 +1,5 @@
 body {
-    width:90%;
+    width:60%;
     height: 80%;
     margin: 20px auto;
     text-align: center;
@@ -84,19 +84,13 @@ header {
 .zone-2 {
     height: 100%;
     width:50%;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
 }
 
-.hangman {
-    height: 50%;
-    width: 100%;
-    border-top: 1px solid black;
-}
-.hangman-icon {
-    margin-top: 0;
-    height: 70%;
-    border: 1px solid black;
+#hangman-drawing {
+  border: 1px solid black;
+  height: 50%;
+  width: 50%;
 }
 
 

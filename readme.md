@@ -20,7 +20,7 @@
 
 #### **First basic wireframe for the game:**
 
-<img src="css\images\firstwireframe.PNG">
+<img src="images\firstwireframe.PNG">
 
 ### Creating my word arrays:
 > Next I decided to start by building 4 arrays of words, and a function to randomly generate a word from each array. I didn't know exactly what conditions I wanted the words to meet for each round, so I build 4 arrays of five, six, seven and eight letter words. This would be more than enough to get me started, I can come back and finetune later. *I also did not check if the words are UK or US English, but I have housed them in a spreadsheet so I will come back to this.*
@@ -45,7 +45,7 @@ let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLet
 * Word Zone
 * Discard Zone
 #### **HTML & CSS Wireframe:**
-<img src="css\images\SEI-66 Project 1 Wireframe.PNG">
+<img src="images\SEI-66 Project 1 Wireframe.PNG">
 
 > I knew that I needed to be build a home page so that the **exit** functionality worked, and it would allow for the possibility of allowing 2 people to play the game. As I thought it more important to get the game working first, I left this out for now.
 
