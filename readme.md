@@ -93,6 +93,123 @@ $('.choice').click(function() {
 > I aim to make this look fancier with animation, but for now, this will do.
 
 ### Building the Hangman
-> First I tried building the individual components of the hangman using css which I found to be difficult. I then decided to read up on using JS functions working with an HTML Canvas, which so far has been difficult! I have managed to successfully create one line but the x, y coordinates did not seem to be doing what I wanted them to do. For example, it didn't matter whether I put the coordiantes in LineTo() or MoveTo(), it was doing the exact same thing.
+> First I tried building the individual components of the hangman using css which I found to be difficult. I then decided to read up on using JS functions working with an HTML Canvas, which so far has been difficult! I have managed to successfully create one line but the x, y coordinates did not seem to be doing what I wanted them to do. but I got there in the end!
 
-> I also wanted to avoid repetition of some of the declarations so I tried to build a function to make the code more DRY, and although the functions run, the line does not show in the canvas. I decided to move on.
+> I wanted to avoid repetition of some of the statements so I tried to build a function to make the code more DRY that could create each line / head of my hangman by taking in x,y coordinates.
+
+> In order to make the size of my hangman dynamic, I will replace the coordinates with width/2 height/4 etc once I am happy with my sizing.
+
+``` javascript     
+    function draw(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
+    }
+
+let gallowsPole = () => {draw(0,600,0,40)}
+let gallowsTop = () => {draw(0,40,400,40)}
+let gallowsBottom = () => {draw(0,600,200,600)}
+let gallowsSupport = () => {draw(0,120,80,40)}
+let rope = () => {draw(400,100,400,40)}
+let neck = () => {draw(400,200,400,240)}
+let leftArm = () => {draw(400,240,300,200)}
+let rightArm = () => {draw(draw(400,240,500,200))}
+let body = () => {draw(400,350,400,240)}
+let leftLeg = () => {draw(400,350,300,450)}
+let rightLeg = () => {draw(400,350,500,450)}
+```
+
+> Drawing the head needed it's own function which you can find below.
+
+``` javascript 
+    function head() {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(400,150,50,0,Math.PI*2,true);
+    ctx.stroke();
+}
+```
+
+### Adding lines when an incorrect guess was made
+
+> In order to build my hangman sequentially as each incorrect guess was made, I created an array of each function so that it could be iterated through and called appropriately.
+
+``` javascript 
+const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,body,leftArm, rightArm,leftLeg, rightLeg];
+```
+
+> Next I created an index that would increase by 1 for every incorrect guess, and would be used to draw the line at that index whenever an incorrect guess was made:
+
+``` javascript
+let sixLetterWord = randomSix().toUpperCase();
+let incorrectGuesses = -1; // <---------- index var
+
+console.log(sixLetterWord);
+
+$('.choice').click(function() {
+
+    let letter = $(this).text();
+
+    for (i = 0; i < sixLetterWord.length; i++) {
+
+        if(sixLetterWord[i] == letter) {
+            $(`.word-${i+1}`).text(letter);
+            $(this).text("");
+        }
+    }
+
+    if ($(this).text() == "") {
+    }   else {
+            $('.discarded-letters div').each(function() {
+
+                if($(this).text() == "") {
+                $($(this)).text(letter);
+                incorrectGuesses +=1;  // <---------- index + 1
+                hangman[incorrectGuesses](); // <---------- part of hangman to draw
+                return false;
+                } 
+            });
+        }
+    });     
+```
+### Decreasing the player's lives for the round
+
+> Next I decided to make the lives decrease with every incorrect guess. First I created the array, and then displayed it without the commas to the user.
+
+``` javascript
+let lives = ['❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️'];
+$('.display-lives').text(lives.join(''));
+```
+
+> Next I uncluded a function to remove a life for each incorrect guess made.
+
+``` js
+lives.pop();
+$('.display-lives').text(lives.join(''));
+```
+
+### Ending the round once the player has won or lost
+> First I needed to include a function that checked if the word had been guessed with each letter choice. I set the player and computer score variables to 0 at the start of the game. Then ran the following function each time a guess was made.
+
+``` js
+let playerScore = 0;
+let computerScore = 0;
+```
+
+```js
+    if (lettersGuessed == sixLetterWord.length) {
+        playerScore += 1;
+        $('.playerScore').text(playerScore);
+    } else if (lives.length == 0) {
+        computerScore += 1;
+        $('.computerScore').text(computerScore);
+    } else {}
+```    

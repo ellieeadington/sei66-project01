@@ -8,63 +8,17 @@ let randomSix = () => {return sixLetters[Math.floor(Math.random() * sixLetters.l
 let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLetters.length)]}
 let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
 
+let lives = ['❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️'];
+$('.display-lives').text(lives.join(''));
 
-// first i'm going to create my logic for how the game will know when 
-// the player has made a correct guess or an incorrect guess
+let playerScore = 0;
+let computerScore = 0;
 
-// 1. generate a word
-let sixLetterWord = randomSix().toUpperCase();
-console.log(sixLetterWord);
-
-// 2. The player must pick a letter, so we need to create an event
-// listener so that when the player clicks a letter, it checks the
-// word, then moves to the correct position (positions) or moves to
-// the discard pile. To do this, we will:
-    // get the class of the letter that the player clicks - e.g. (a)
-    // iterate through the word to check where there is a match.
-    // If match - populate the correct div with the letter
-    // If no match - populate the next div in the 'discard' zone with
-//the letter.
-    // Then, hide the letter div in the 'choose letter' zone.
-
-// I added a third class to the letters so that the player can only
-// choose a letter from the 'choose letter' zone.
-
-// First i'm just going to get the letters to end up in the right divs
-// later I will focus on making it look like the whole letter tile
-// is moving to the right place
-
-$('.choice').click(function() {
-
-    let letter = $(this).text();
-
-    for (i = 0; i < sixLetterWord.length; i++) {
-
-        if(sixLetterWord[i] == letter) {
-            $(`.word-${i+1}`).text(letter);
-            $(this).text("");
-        }
-    }
-    console.log("success");
-    console.log(letter);
-
-    
-    if ($(this).text() == "") {
-    }
-        else {
-            $('.discarded-letters div').each(function() {
-
-                if($(this).text() == "") {
-                $($(this)).text(letter);
-                return false;
-                } 
-            });
-        }
-        });     
-        
 // Forgot that you start from the gallows with hangman so need to go back and update accordingly 
 
 // Decided to use canvas and create the hangman in javascript as I was finding it difficult using css
+
+// created DRY function to draw the different components of the hangman
 
 
     function draw(mtX,mtY, ltX, ltY ) {
@@ -78,7 +32,9 @@ $('.choice').click(function() {
     ctx.stroke();
 }
 
-function circle() {
+// the head needed it's own function
+
+function head() {
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
     ctx.strokeStyle = 'black';
@@ -89,56 +45,73 @@ function circle() {
 
 }
 
-circle();
+// The rest are below
 
-//gallows pole
-draw(0,600,0,40);
+let gallowsPole = () => {draw(0,600,0,40)}
+let gallowsTop = () => {draw(0,40,400,40)}
+let gallowsBottom = () => {draw(0,600,200,600)}
+let gallowsSupport = () => {draw(0,120,80,40)}
+let rope = () => {draw(400,100,400,40)}
+let neck = () => {draw(400,200,400,240)}
+let leftArm = () => {draw(400,240,300,200)}
+let rightArm = () => {draw(draw(400,240,500,200))}
+let body = () => {draw(400,350,400,240)}
+let leftLeg = () => {draw(400,350,300,450)}
+let rightLeg = () => {draw(400,350,500,450)}
 
-// gallows top
-draw(0,40,400,40);
 
-// gallows bottom
-draw(0,600,200,600);
+// ----------------------------------------------------------------
 
-// // gallows support
-// draw(400,100,400,40);
+const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,body,leftArm, rightArm,leftLeg, rightLeg];
 
-// rope
-draw(400,100,400,40);
 
-// neck
-draw(400,200,400,240);
 
-// left arm
-draw(400,240,300,200);
+let sixLetterWord = randomSix().toUpperCase();
+let incorrectGuesses = -1;
+let lettersGuessed = 0;
 
-// right arm
-draw(400,240,500,200);
+console.log(sixLetterWord);
 
-// neck
-draw(400,350,400,240);
+// - play the game
 
-// left leg
-draw(400,350,300,450);
+$('.choice').click(function() {
 
-// right leg
-draw(400,350,500,450);
+    let letter = $(this).text();
 
-// draw = function(fromX, fromY, toX, fromY) {
-//     const canvas = document.querySelector('#hangman-drawing');
-//     const ctx = canvas.getContext('2d');
-//     ctx.strokeStyle = 'black';
-//     ctx.lineWidth = 2;
-//     ctx.beginPath();
-//     ctx.moveTo(fromX, fromY);
-//     ctx.lineTo( toX,  fromY);
-//     ctx.stroke(); 
-// }
+    for (i = 0; i < sixLetterWord.length; i++) {
 
-// function gallowsBottom() {
-//     draw(10, 0, 10, 200);
-//     console.log("draw");
-// }
+        if(sixLetterWord[i] == letter) {
+            $(`.word-${i+1}`).text(letter);
+            $(this).text("");
+            lettersGuessed += 1;
+            console.log(lettersGuessed);
+        }
+    }
 
-// gallowsBottom() 
+    if ($(this).text() == "") {
+    }   else {
+            $('.discarded-letters div').each(function() {
 
+                if($(this).text() == "") {
+                $($(this)).text(letter);
+                incorrectGuesses +=1;
+                hangman[incorrectGuesses]();
+                lives.pop();
+                $('.display-lives').text(lives.join(''));
+                return false;
+                } 
+            });
+        }
+    
+    if (lettersGuessed == sixLetterWord.length) {
+        playerScore += 1;
+        $('.playerScore').text(playerScore);
+    } else if (lives.length == 0) {
+        computerScore += 1;
+        $('.computerScore').text(computerScore);
+    } else {}
+    });
+
+    
+    
+        
