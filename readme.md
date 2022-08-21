@@ -164,20 +164,11 @@ $('.choice').click(function() {
             $(`.word-${i+1}`).text(letter);
             $(this).text("");
         }
-    }
-
-    if ($(this).text() == "") {
-    }   else {
-            $('.discarded-letters div').each(function() {
-
-                if($(this).text() == "") {
-                $($(this)).text(letter);
-                incorrectGuesses +=1;  // <---------- index + 1
-                hangman[incorrectGuesses](); // <---------- part of hangman to draw
-                return false;
-                } 
-            });
-        }
+    }  else {
+            incorrectGuesses +=1;  // <---------- index + 1
+            hangman[incorrectGuesses](); // <---------- part of hangman to draw
+            return false;
+        } 
     });     
 ```
 ### Decreasing the player's lives for the round
@@ -213,3 +204,35 @@ let computerScore = 0;
         $('.computerScore').text(computerScore);
     } else {}
 ```    
+## Day 03
+### Changing elements of the game
+> I realised that there was no need for the 'discard zone' given that it would be obvious once a letter had been chosen incorrectly, as the tile could be highlighted in red, for example, in the 'choose letter zone'. I decided first to remove the relevant HTML, CSS and JS, and then restructure my game so that I was happy with all of the components and the layout. I got slightly carried away with some of the styling of the game, as it was a nice break from writing the logic - haha! I had to update my canvas JS draw co-ordinates too. It was very difficult to get the horizontal and vertical lines to appear to be the same width, so I had to create two draw functions, one that drew thicker lines. Code below:
+
+``` js
+ function draw(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
+}
+
+function drawThick(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
+    
+}
+```
+>This was the look of my game once I finished:
+<img src="images\hangman.PNG">

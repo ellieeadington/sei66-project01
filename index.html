@@ -4,106 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Hangman</title>
 </head>
 <body>
     <header>
-        <h1 class="header">HANGMAN</h1>
+        <h1 class="fancy">HANGMAN</h1>
     </header>
     <main>
-
         <div class="game">
-            <div class="zone-1">
                 <div class="game-info">
                     <div class="info">
-                        <h3 class="info-desc">Round:</h3>
-                        <h3 class="info-value">1</h3>
+                        <p class="info-desc">Round:</p>
+                        <p class="info-value">1</p>
                     </div>
                     <div class="info">
-                        <h3 class="info-desc">Difficulty: </h3>
-                        <h3 class="info-value">Easy</h3>
+                        <p class="info-desc">Difficulty: </p>
+                        <p class="info-value">Easy</p>
                     </div>
                     <div class="info">
-                        <h3 class="info-desc">Player:</h3>
-                        <h3 class="info-value playerScore">0</h3>
-                        <h3 class="info-desc">Computer:</h3>
-                        <h3 class="info-value computerScore">0</h3>
+                        <p class="info-desc">Player:<p>
+                        <p class="info-value playerScore">0</p>
+                        <p class="info-desc">Computer:</p>
+                        <p class="info-value computerScore">0</p>
                     </div>
                     <div class="info">
-                        <h3 class="info-desc">Lives: </h3>
-                        <h3 class="info-value display-lives"></h3>
+                        <p class="info-desc">Lives:</p>
+                        <p class="info-value display-lives fancy"></p>
+                    </div>
+                </div>   
+                <div class="hangman-zone">           
+                    <canvas id="hangman-drawing"></canvas>
+                    <div class="word">
+                        <div class="letter word-1"></div>
+                        <div class="letter word-2"></div>
+                        <div class="letter word-3"></div>
+                        <div class="letter word-4"></div>
+                        <div class="letter word-5"></div>
+                        <div class="letter word-6"></div>
                     </div>
                 </div>
-                <div class="choose-letter">
-                    <h2>Choose a letter</h2>
-                    <div class="letters">
-                        <div class="letter a choice">A</div>
-                        <div class="letter b choice">B</div>
-                        <div class="letter c choice">C</div>
-                        <div class="letter d choice">D</div>
-                        <div class="letter e choice">E</div>
-                        <div class="letter f choice">F</div>
-                        <div class="letter g choice">G</div>
-                        <div class="letter h choice">H</div>
-                        <div class="letter i choice">I</div>
-                        <div class="letter j choice">J</div>
-                        <div class="letter k choice">K</div>
-                        <div class="letter l choice">L</div>
-                        <div class="letter m choice">M</div>
-                        <div class="letter n choice">N</div>
-                        <div class="letter o choice">O</div>
-                        <div class="letter p choice">P</div>
-                        <div class="letter q choice">Q</div>
-                        <div class="letter r choice">R</div>
-                        <div class="letter s choice">S</div>
-                        <div class="letter t choice">T</div>
-                        <div class="letter u choice">U</div>
-                        <div class="letter v choice">V</div>
-                        <div class="letter w choice">W</div>
-                        <div class="letter x choice">X</div>
-                        <div class="letter y choice">Y</div>
-                        <div class="letter z choice">Z</div>
-                    </div>  
-                </div>
-            </div>
-                <div class="zone-2">
-                    
-    <canvas id="hangman-drawing" width=630 height=620></canvas>
-                    <div class="word-zone">
-                        <div class="word">
-                            <div class="letter word-1"></div>
-                            <div class="letter word-2"></div>
-                            <div class="letter word-3"></div>
-                            <div class="letter word-4"></div>
-                            <div class="letter word-5"></div>
-                            <div class="letter word-6"></div>
-                        </div>
-                    </div>
-                    <div class="discard-zone"><h2>Discard Zone</h2>
-                        <div class="discarded-letters">
-                            <div class="letter discard-1"></div>
-                            <div class="letter discard-2"></div>
-                            <div class="letter discard-3"></div>
-                            <div class="letter discard-4"></div>
-                            <div class="letter discard-5"></div>
-                            <div class="letter discard-6"></div>
-                            <div class="letter discard-7"></div>
-                            <div class="letter discard-8"></div>
-                            <div class="letter discard-9"></div>
-                            <div class="letter discard-10"></div>
-                            <div class="letter discard-11"></div>
-                        </div>
-                    </div>
-                </div>
-        </div>
+    <div class="choose-letter">
+        <div class="letters">
+        <div class="letter a choice">A</div>
+        <div class="letter b choice">B</div>
+        <div class="letter c choice">C</div>
+        <div class="letter d choice">D</div>
+        <div class="letter e choice">E</div>
+        <div class="letter f choice">F</div>
+        <div class="letter g choice">G</div>
+        <div class="letter h choice">H</div>
+        <div class="letter i choice">I</div>
+        <div class="letter j choice">J</div>
+        <div class="letter k choice">K</div>
+        <div class="letter l choice">L</div>
+        <div class="letter m choice">M</div>
+        <div class="letter n choice">N</div>
+        <div class="letter o choice">O</div>
+        <div class="letter p choice">P</div>
+        <div class="letter q choice">Q</div>
+        <div class="letter r choice">R</div>
+        <div class="letter s choice">S</div>
+        <div class="letter t choice">T</div>
+        <div class="letter u choice">U</div>
+        <div class="letter v choice">V</div>
+        <div class="letter w choice">W</div>
+        <div class="letter x choice">X</div>
+        <div class="letter y choice">Y</div>
+        <div class="letter z choice">Z</div>
+     </div>  
+    </div>              
     </main>
     <footer>
-        <div>
             <button class="exit">Exit</button>
-        </div>
-        <small>Created by Ellie Eadington</small>
     </footer>
     <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"

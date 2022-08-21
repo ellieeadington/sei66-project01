@@ -8,7 +8,7 @@ let randomSix = () => {return sixLetters[Math.floor(Math.random() * sixLetters.l
 let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLetters.length)]}
 let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
 
-let lives = ['❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️'];
+let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
 $('.display-lives').text(lives.join(''));
 
 let playerScore = 0;
@@ -24,45 +24,60 @@ let computerScore = 0;
     function draw(mtX,mtY, ltX, ltY ) {
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = '#36414b';
     ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(mtX, mtY);
     ctx.lineTo(ltX, ltY);
     ctx.stroke();
 }
 
+function drawThick(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
+    
+}
+
+
 // the head needed it's own function
 
 function head() {
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 4;
     ctx.beginPath();
-    ctx.arc(400,150,50,0,Math.PI*2,true);
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.arc(218,48,10,0,Math.PI*2,true);
     ctx.stroke();
 
 }
 
 // The rest are below
 
-let gallowsPole = () => {draw(0,600,0,40)}
-let gallowsTop = () => {draw(0,40,400,40)}
-let gallowsBottom = () => {draw(0,600,200,600)}
-let gallowsSupport = () => {draw(0,120,80,40)}
-let rope = () => {draw(400,100,400,40)}
-let neck = () => {draw(400,200,400,240)}
-let leftArm = () => {draw(400,240,300,200)}
-let rightArm = () => {draw(draw(400,240,500,200))}
-let body = () => {draw(400,350,400,240)}
-let leftLeg = () => {draw(400,350,300,450)}
-let rightLeg = () => {draw(400,350,500,450)}
-
+let gallowsPole = () => {drawThick(70,128,70,22)} //
+let gallowsTop = () => {draw(70,21,220,21)} //
+let gallowsBottom = () => {draw(40,130,140,130)} //
+let gallowsSupport = () => {draw(70,45,110,22)} //
+let rope = () => {drawThick(218,36,218,22)} //
+let neck = () => {drawThick(218,60,218,70)} //
+let leftArm = () => {draw(218,70,180,86)} //
+let rightArm = () => {draw(draw(218,70,260,86))} //
+let body = () => {drawThick(218,70,218,90)} //
+let leftLeg = () => {drawThick(218,90,190,120)}
+let rightLeg = () => {drawThick(218,90,250,120)}
 
 // ----------------------------------------------------------------
 
-const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,body,leftArm, rightArm,leftLeg, rightLeg];
+const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
 
 
 
@@ -83,17 +98,12 @@ $('.choice').click(function() {
         if(sixLetterWord[i] == letter) {
             $(`.word-${i+1}`).text(letter);
             $(this).text("");
-            lettersGuessed += 1;
-            console.log(lettersGuessed);
+            lettersGuessed += 1;yu7
         }
     }
 
     if ($(this).text() == "") {
     }   else {
-            $('.discarded-letters div').each(function() {
-
-                if($(this).text() == "") {
-                $($(this)).text(letter);
                 incorrectGuesses +=1;
                 hangman[incorrectGuesses]();
                 lives.pop();
@@ -101,7 +111,7 @@ $('.choice').click(function() {
                 return false;
                 } 
             });
-        }
+
     
     if (lettersGuessed == sixLetterWord.length) {
         playerScore += 1;
@@ -110,7 +120,6 @@ $('.choice').click(function() {
         computerScore += 1;
         $('.computerScore').text(computerScore);
     } else {}
-    });
 
     
     
