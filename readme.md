@@ -204,6 +204,8 @@ let computerScore = 0;
         $('.computerScore').text(computerScore);
     } else {}
 ```    
+> I was encountering problems with this code running before the last letter was placed in the word zone, so I decided to come back to this later.
+
 ## Day 03
 ### Changing elements of the game
 > I realised that there was no need for the 'discard zone' given that it would be obvious once a letter had been chosen incorrectly, as the tile could be highlighted in red, for example, in the 'choose letter zone'. I decided first to remove the relevant HTML, CSS and JS, and then restructure my game so that I was happy with all of the components and the layout. I got slightly carried away with some of the styling of the game, as it was a nice break from writing the logic - haha! I had to update my canvas JS draw co-ordinates too. It was very difficult to get the horizontal and vertical lines to appear to be the same width, so I had to create two draw functions, one that drew thicker lines. Code below:
@@ -236,3 +238,86 @@ function drawThick(mtX,mtY, ltX, ltY ) {
 ```
 >This was the look of my game once I finished:
 <img src="images\hangman.PNG">
+
+## Day 04
+
+### Showing incorrect letter guesses in the 'choose letter zone':
+> Now that I no longer have the 'discard zone' I needed to create a way for the user to know that the letters they chose were incorrect. I added this into my code in the case of an incorrect guess being made:
+``` js
+$(this).css({backgroundColor: "rgb(167, 95, 95)"})
+```
+### What happens when the round ends?
+
+> Next I determined what I wanted to happen when the round ends:
+#### **Guessing the word correctly:**
+1. word highlights in green, with some animation.
+2. A box pops up telling the player they one, and asks them to click button to continue to next round
+3. Game info updates to reflect the new round, game resets
+#### **Guessing the word incorrectly:**
+1. word highlights in red, with some animation.
+2. A box pops up telling the player they lost, reveals the correct word, and asks them to click button to continue to next round.
+3. Game info updates to reflect the new round, game resets
+
+#### **Fixing my function to test the status of the game**
+> First I created a new function which would run just after the first for loop of my game, ensuring that the last correctly guessed letter would be placed in the word zone, and would also end the game if the player had no lives left, then reset the round:
+
+``` js
+function checkRoundStatus() {
+  
+    if (lettersGuessed == sixLetterWord.length) {
+        $('.word > .letter').css({backgroundColor: "green"});
+        setTimeout(fadeWord,2000);
+        playerScore += 1;
+        $('.playerScore').text(playerScore);
+        setTimeout(function() {newRound();},3000);
+
+
+    } else if (lives.length == 0) {
+        $('.word > .letter').css({backgroundColor: "rgb(154, 78, 78)"});
+        setTimeout(fadeWord,2000);
+        computerScore += 1;
+        $('.computerScore').text(computerScore);
+        setTimeout(function() {newRound();},3000);
+        return false
+    } else return false
+            
+    }
+ ```
+ > This set the background of the letter tiles in the word to either red or green when the round ended depending on the result.
+ > I used a setTimeout function to fade the letters out of the word zone, update the score, and then move on to a new round. See function below:
+ ``` js
+ function fadeWord() {
+    $('.word > .letter').each(function() {
+        $(this).text("");   
+     })
+    $('.letter').each(function() {
+        $(this).css({backgroundColor: "#adb6be"})
+    }) 
+    }
+```    
+ > The newRound() function increases the round number by 1, increase the difficulty level and restore the number of lives the player had. I increased the difficulty level by creating an array that would be iterated through on the start of each round:
+ ``` js
+ const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
+```
+>Function below:
+``` js
+function newRound() {
+    round +=1;
+    $('.round').text(round);
+    difficulty += 1;
+    $('.difficulty').text(roundLevel[difficulty]);
+    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+    $('.display-lives').text(lives.join(''));
+}
+```
+> In order to reset all of the letters in the choose zone, I needed to create a for each loop that reset each letter, which also required me to add id's to each of my letters so I went ahead and did this.
+
+ALSO NEED TO INCLUDE A WAY FOR PLAYER TO NOT BE ABLE TO CHOOSE LETTERS WHILST GAME RESETS
+
+NEED TO RESET HANGMAN
+
+NEED TO FIX THE LAST LETTER TURNING RED WHEN CHOSEN CORRECTLY
+
+I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
+
+

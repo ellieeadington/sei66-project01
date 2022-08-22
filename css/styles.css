@@ -20,7 +20,7 @@ header {
     font-family: 'Rubik Wet Paint', cursive;
     background: linear-gradient(
       to right, 
-      rgb(167, 95, 95), 
+      #A75F5F, 
       rgb(127, 23, 23)
     );
     -webkit-background-clip: text;

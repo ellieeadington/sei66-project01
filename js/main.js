@@ -8,18 +8,7 @@ let randomSix = () => {return sixLetters[Math.floor(Math.random() * sixLetters.l
 let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLetters.length)]}
 let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
 
-let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-$('.display-lives').text(lives.join(''));
-
-let playerScore = 0;
-let computerScore = 0;
-
-// Forgot that you start from the gallows with hangman so need to go back and update accordingly 
-
-// Decided to use canvas and create the hangman in javascript as I was finding it difficult using css
-
 // created DRY function to draw the different components of the hangman
-
 
     function draw(mtX,mtY, ltX, ltY ) {
     canvas = document.querySelector('#hangman-drawing');
@@ -42,10 +31,8 @@ function drawThick(mtX,mtY, ltX, ltY ) {
     ctx.beginPath();
     ctx.moveTo(mtX, mtY);
     ctx.lineTo(ltX, ltY);
-    ctx.stroke();
-    
+    ctx.stroke();   
 }
-
 
 // the head needed it's own function
 
@@ -58,7 +45,6 @@ function head() {
     ctx.lineCap = 'round';
     ctx.arc(218,48,10,0,Math.PI*2,true);
     ctx.stroke();
-
 }
 
 // The rest are below
@@ -79,48 +65,104 @@ let rightLeg = () => {drawThick(218,90,250,120)}
 
 const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
 
-
+const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
 
 let sixLetterWord = randomSix().toUpperCase();
+let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+$('.display-lives').text(lives.join(''));
+let playerScore = 0;
+let computerScore = 0;
 let incorrectGuesses = -1;
 let lettersGuessed = 0;
+let round = 1;
+let difficulty = 0;
+
 
 console.log(sixLetterWord);
 
-// - play the game
+function fadeWord() {
+    $('.word > .letter').each(function() {
+        $(this).text("");   
+     })
+    $('.letter').each(function() {
+        $(this).css({backgroundColor: "#adb6be"})
+    }) 
+    }
 
-$('.choice').click(function() {
+function newRound() {
+    round +=1;
+    $('.round').text(round);
+    difficulty += 1;
+    $('.difficulty').text(roundLevel[difficulty]);
+    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+    $('.display-lives').text(lives.join(''));
+    sixLetterWord = randomSix().toUpperCase();
+    incorrectGuesses = -1;
+    lettersGuessed = 0;
+    $('.letters > .letter').each(function() {
+        let thisID = $(this).attr('id');
+        $(this).text(thisID);
+    })
+    console.log(sixLetterWord);
+}
+
+function checkRoundStatus() {
+  
+    if (lettersGuessed == sixLetterWord.length) {
+        $('.word > .letter').css({backgroundColor: "#83A75F"});
+        setTimeout(fadeWord,2000);
+        playerScore += 1;
+        $('.playerScore').text(playerScore);
+        setTimeout(function() {newRound();},3000);
+        newRound();
+        return false
+
+    } else if (lives.length == 0) {
+        $('.word > .letter').css({backgroundColor: "#A75F5F"});
+        setTimeout(fadeWord,2000);
+        computerScore += 1;
+        $('.computerScore').text(computerScore);
+        setTimeout(function() {newRound();},3000);
+        newRound();
+        return false
+    } else return false
+            
+    }
+
+
+
+
+
+
+$('.letters > .letter').click(function() { 
 
     let letter = $(this).text();
-
+////////////////////////////////////////////////////////////////    
     for (i = 0; i < sixLetterWord.length; i++) {
 
         if(sixLetterWord[i] == letter) {
             $(`.word-${i+1}`).text(letter);
+            console.log($(`.word-${i+1}`).text());
             $(this).text("");
-            lettersGuessed += 1;yu7
+            lettersGuessed += 1;
         }
     }
-
+    checkRoundStatus();
+////////////////////////////////////////////////////////////////
     if ($(this).text() == "") {
     }   else {
                 incorrectGuesses +=1;
                 hangman[incorrectGuesses]();
                 lives.pop();
                 $('.display-lives').text(lives.join(''));
+                $(this).css({backgroundColor: "rgb(167, 95, 95)"});
                 return false;
-                } 
-            });
+                }
 
-    
-    if (lettersGuessed == sixLetterWord.length) {
-        playerScore += 1;
-        $('.playerScore').text(playerScore);
-    } else if (lives.length == 0) {
-        computerScore += 1;
-        $('.computerScore').text(computerScore);
-    } else {}
+////////////////////////////////////////////////////////////////                
+});
 
-    
-    
-        
+
+
+
+
