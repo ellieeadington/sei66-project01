@@ -431,7 +431,7 @@ const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head
 const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
 
 let sixLetterWord = randomSix().toUpperCase();
-let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
 $('.display-lives').text(lives.join(''));
 let playerScore = 0;
 let computerScore = 0;
@@ -457,7 +457,7 @@ function newRound() {
     $('.round').text(round);
     difficulty += 1;
     $('.difficulty').text(roundLevel[difficulty]);
-    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
     $('.display-lives').text(lives.join(''));
     sixLetterWord = randomSix().toUpperCase();
     incorrectGuesses = -1;
@@ -508,7 +508,7 @@ $('.letters').on('click', '.choose' ,function() {
             lettersGuessed += 1;
         }
     }
-    if ($(this).text() == "") {
+    if ($(this).text() == "" || lives.length == 0) {
         checkRoundStatus();
     }   else {
                 incorrectGuesses +=1;
@@ -522,7 +522,7 @@ $('.letters').on('click', '.choose' ,function() {
 });
 
 ```
-NEED TO RESET HANGMAN
+NEED TO RESET HANGMAN & FIX ALLOWING A USER TO PRESS ANOTHER LETTER WHEN THEY HAVE LOST
 
 I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
 

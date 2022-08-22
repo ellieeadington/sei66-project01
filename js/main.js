@@ -68,7 +68,7 @@ const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head
 const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
 
 let sixLetterWord = randomSix().toUpperCase();
-let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
 $('.display-lives').text(lives.join(''));
 let playerScore = 0;
 let computerScore = 0;
@@ -94,7 +94,7 @@ function newRound() {
     $('.round').text(round);
     difficulty += 1;
     $('.difficulty').text(roundLevel[difficulty]);
-    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
     $('.display-lives').text(lives.join(''));
     sixLetterWord = randomSix().toUpperCase();
     incorrectGuesses = -1;
@@ -145,7 +145,7 @@ $('.letters').on('click', '.choose' ,function() {
             lettersGuessed += 1;
         }
     }
-    if ($(this).text() == "") {
+    if ($(this).text() == "" || lives.length == 0) {
         checkRoundStatus();
     }   else {
                 incorrectGuesses +=1;
