@@ -562,7 +562,7 @@ $('.letters').on('click', '.choose' ,function() {
 ### Pop Up:
 > I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
 
-> Created two popups, one for when the user looses and one for when they win. Set z index to -1;
+> Created two popups, one for when the user loses and one for when they win. Set z index to -1;
 
 > when round ends, included switching z index to 1 for the respective popUps depending on outcome of game.
 > created an event listener for the popup so when the user clicks continue, the popup dissapears.
@@ -574,3 +574,42 @@ $('.letters').on('click', '.choose' ,function() {
 <img src="images\hangmanPopUp.PNG">        
 
 
+### Creating my final word arrays:
+> I decided I wanted 7 rounds so there would never be a draw, and determined what the conditions the words chosen within each round must meet, so I created my list of words between 5 and 9 letters in a google sheet, used formulas to filter them for each round, used concatenation to push them into arrays and added them into my js file. Sheet linked <a href="https://docs.google.com/spreadsheets/d/1jpsbb1sNimso9Y1-Ci903mLQZCGnRS81w8l61reBdIY/edit?usp=sharing">here</a> to show logic.
+
+> Round1 = 5 letter words - no repeating letters
+> Round2 = 6 letter words - no repeating letters
+> Round3 = 7 letter words - repeating letters
+> Round4 = 7 letter words - no repeating letters
+> Round5 = 8 letter words - repeating letters
+> Round6 = 8 letter words - no repeating letters
+> Round7 = 9 letter words - repeating letters
+
+> I updated the functions to generate the random words, and put them in an array.
+
+``` js
+let firstWord = () => {return round1[Math.floor(Math.random() * round1.length)]};
+let secondWord = () => {return round2[Math.floor(Math.random() * round2.length)]};
+let thirdWord = () => {return round3[Math.floor(Math.random() * round3.length)]};
+let fourthWord = () => {return round4[Math.floor(Math.random() * round4.length)]};
+let fifthWord = () => {return round5[Math.floor(Math.random() * round5.length)]};
+let sixthWord = () => {return round6[Math.floor(Math.random() * round6.length)]};
+let seventhWord = () => {return round7[Math.floor(Math.random() * round7.length)]};
+
+const gameWords = [firstWord,secondWord,thirdWord,fourthWord,fifthWord,sixthWord,seventhWord];    
+```
+
+> I then set the word for the game to the first item in the array and increased the index every time a round was completed.
+
+> Now, I had to set the length of the number of tiles that appeared in the wordZone for each round. I created a new function to be run every time the round ended:
+``` js
+function createTiles() {
+    $('.word').html('');
+
+    for (i = 1; i < word.length + 1; i++) {
+        newDiv =  `<div class="letter word-${i}"></div>`;
+      $('.word').append(newDiv);
+      console.log("i");
+    }
+  }
+  ```
