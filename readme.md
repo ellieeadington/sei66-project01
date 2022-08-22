@@ -237,7 +237,7 @@ function drawThick(mtX,mtY, ltX, ltY ) {
 }
 ```
 >This was the look of my game once I finished:
-<img src="images\hangman.PNG">
+<img src="images\hangman.png">
 
 ## Day 04
 
