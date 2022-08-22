@@ -102,19 +102,24 @@ function newRound() {
     $('.letters > .letter').each(function() {
         let thisID = $(this).attr('id');
         $(this).text(thisID);
-    })
+        $(this).addClass("choose");
+    });
     console.log(sixLetterWord);
 }
 
 function checkRoundStatus() {
   
     if (lettersGuessed == sixLetterWord.length) {
+
+        $('.letters > .letter').each(function() {
+            $(this).removeClass("choose");
+        });
+
         $('.word > .letter').css({backgroundColor: "#83A75F"});
         setTimeout(fadeWord,2000);
         playerScore += 1;
         $('.playerScore').text(playerScore);
         setTimeout(function() {newRound();},3000);
-        newRound();
         return false
 
     } else if (lives.length == 0) {
@@ -123,21 +128,14 @@ function checkRoundStatus() {
         computerScore += 1;
         $('.computerScore').text(computerScore);
         setTimeout(function() {newRound();},3000);
-        newRound();
         return false
     } else return false
             
     }
 
-
-
-
-
-
-$('.letters > .letter').click(function() { 
+$('.letters').on('click', '.choose' ,function() { 
 
     let letter = $(this).text();
-////////////////////////////////////////////////////////////////    
     for (i = 0; i < sixLetterWord.length; i++) {
 
         if(sixLetterWord[i] == letter) {
@@ -147,9 +145,8 @@ $('.letters > .letter').click(function() {
             lettersGuessed += 1;
         }
     }
-    checkRoundStatus();
-////////////////////////////////////////////////////////////////
     if ($(this).text() == "") {
+        checkRoundStatus();
     }   else {
                 incorrectGuesses +=1;
                 hangman[incorrectGuesses]();
@@ -158,8 +155,7 @@ $('.letters > .letter').click(function() {
                 $(this).css({backgroundColor: "rgb(167, 95, 95)"});
                 return false;
                 }
-
-////////////////////////////////////////////////////////////////                
+             
 });
 
 

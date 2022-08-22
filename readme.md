@@ -244,7 +244,29 @@ function drawThick(mtX,mtY, ltX, ltY ) {
 ### Showing incorrect letter guesses in the 'choose letter zone':
 > Now that I no longer have the 'discard zone' I needed to create a way for the user to know that the letters they chose were incorrect. I added this into my code in the case of an incorrect guess being made:
 ``` js
-$(this).css({backgroundColor: "rgb(167, 95, 95)"})
+$('.letters > .letter').click(function() { 
+
+    let letter = $(this).text();
+    for (i = 0; i < sixLetterWord.length; i++) {
+
+        if(sixLetterWord[i] == letter) {
+            $(`.word-${i+1}`).text(letter);
+            console.log($(`.word-${i+1}`).text());
+            $(this).text("");
+            lettersGuessed += 1;
+        }
+    }
+    if ($(this).text() == "") {
+    }   else {
+                incorrectGuesses +=1;
+                hangman[incorrectGuesses]();
+                lives.pop();
+                $('.display-lives').text(lives.join(''));
+                $(this).css({backgroundColor: "rgb(167, 95, 95)"});
+                return false;
+                }
+             
+});
 ```
 ### What happens when the round ends?
 
@@ -310,13 +332,197 @@ function newRound() {
     $('.display-lives').text(lives.join(''));
 }
 ```
-> In order to reset all of the letters in the choose zone, I needed to create a for each loop that reset each letter, which also required me to add id's to each of my letters so I went ahead and did this.
+> In order to reset all of the letters in the choose zone, I needed to create a for each loop that reset each letter, which also required me to add id's to each of my letters. I also needed to create a new word to guess, and reset the 'incorrectGuesses' and 'lettersGuessed variables back so I went ahead and did this.
+
+``` js
+function newRound() {
+    round +=1;
+    $('.round').text(round);
+    difficulty += 1;
+    $('.difficulty').text(roundLevel[difficulty]);
+    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+    $('.display-lives').text(lives.join(''));
+    sixLetterWord = randomSix().toUpperCase();
+    incorrectGuesses = -1;
+    lettersGuessed = 0;
+    $('.letters > .letter').each(function() {
+        let thisID = $(this).attr('id');
+        $(this).text(thisID);
+    })
+    console.log(sixLetterWord);
+}
+```
 
 ALSO NEED TO INCLUDE A WAY FOR PLAYER TO NOT BE ABLE TO CHOOSE LETTERS WHILST GAME RESETS
 
-NEED TO RESET HANGMAN
+#### **Removing and adding a class to the letters in the choose zone to allow users to select a letter when the game is in progress.**
+> First I had to add a class into the letters, I named this 'choose'.
 
-NEED TO FIX THE LAST LETTER TURNING RED WHEN CHOSEN CORRECTLY
+> Then I updated my event listener to refer to this class of the letters.
+
+> Then I removed the class once the round had stopped in the checkRoundStatus() function, and added it back in in the newRound() function.
+
+> My code so far looks like this:
+
+``` js
+
+let randomFive = () => {return fiveLetters[Math.floor(Math.random() * fiveLetters.length)]}
+let randomSix = () => {return sixLetters[Math.floor(Math.random() * sixLetters.length)]}
+let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLetters.length)]}
+let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
+
+// created DRY function to draw the different components of the hangman
+
+    function draw(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
+}
+
+function drawThick(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();   
+}
+
+// the head needed it's own function
+
+function head() {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.arc(218,48,10,0,Math.PI*2,true);
+    ctx.stroke();
+}
+
+// The rest are below
+
+let gallowsPole = () => {drawThick(70,128,70,22)} //
+let gallowsTop = () => {draw(70,21,220,21)} //
+let gallowsBottom = () => {draw(40,130,140,130)} //
+let gallowsSupport = () => {draw(70,45,110,22)} //
+let rope = () => {drawThick(218,36,218,22)} //
+let neck = () => {drawThick(218,60,218,70)} //
+let leftArm = () => {draw(218,70,180,86)} //
+let rightArm = () => {draw(draw(218,70,260,86))} //
+let body = () => {drawThick(218,70,218,90)} //
+let leftLeg = () => {drawThick(218,90,190,120)}
+let rightLeg = () => {drawThick(218,90,250,120)}
+
+// ----------------------------------------------------------------
+
+const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
+
+const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
+
+let sixLetterWord = randomSix().toUpperCase();
+let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+$('.display-lives').text(lives.join(''));
+let playerScore = 0;
+let computerScore = 0;
+let incorrectGuesses = -1;
+let lettersGuessed = 0;
+let round = 1;
+let difficulty = 0;
+
+
+console.log(sixLetterWord);
+
+function fadeWord() {
+    $('.word > .letter').each(function() {
+        $(this).text("");   
+     })
+    $('.letter').each(function() {
+        $(this).css({backgroundColor: "#adb6be"})
+    }) 
+    }
+
+function newRound() {
+    round +=1;
+    $('.round').text(round);
+    difficulty += 1;
+    $('.difficulty').text(roundLevel[difficulty]);
+    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+    $('.display-lives').text(lives.join(''));
+    sixLetterWord = randomSix().toUpperCase();
+    incorrectGuesses = -1;
+    lettersGuessed = 0;
+    $('.letters > .letter').each(function() {
+        let thisID = $(this).attr('id');
+        $(this).text(thisID);
+        $(this).addClass("choose");
+    });
+    console.log(sixLetterWord);
+}
+
+function checkRoundStatus() {
+  
+    if (lettersGuessed == sixLetterWord.length) {
+
+        $('.letters > .letter').each(function() {
+            $(this).removeClass("choose");
+        });
+
+        $('.word > .letter').css({backgroundColor: "#83A75F"});
+        setTimeout(fadeWord,2000);
+        playerScore += 1;
+        $('.playerScore').text(playerScore);
+        setTimeout(function() {newRound();},3000);
+        return false
+
+    } else if (lives.length == 0) {
+        $('.word > .letter').css({backgroundColor: "#A75F5F"});
+        setTimeout(fadeWord,2000);
+        computerScore += 1;
+        $('.computerScore').text(computerScore);
+        setTimeout(function() {newRound();},3000);
+        return false
+    } else return false
+            
+    }
+
+$('.letters').on('click', '.choose' ,function() { 
+
+    let letter = $(this).text();
+    for (i = 0; i < sixLetterWord.length; i++) {
+
+        if(sixLetterWord[i] == letter) {
+            $(`.word-${i+1}`).text(letter);
+            console.log($(`.word-${i+1}`).text());
+            $(this).text("");
+            lettersGuessed += 1;
+        }
+    }
+    if ($(this).text() == "") {
+        checkRoundStatus();
+    }   else {
+                incorrectGuesses +=1;
+                hangman[incorrectGuesses]();
+                lives.pop();
+                $('.display-lives').text(lives.join(''));
+                $(this).css({backgroundColor: "rgb(167, 95, 95)"});
+                return false;
+                }
+             
+});
+
+```
+NEED TO RESET HANGMAN
 
 I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
 
