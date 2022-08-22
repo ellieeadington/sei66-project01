@@ -132,6 +132,25 @@ header {
     height: 60px;
 }
 
+.popup {
+    position: absolute;
+    margin-left: 270px;
+    margin-top:  150px;
+    width: 540px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 5px 10px #888888;
+    border-radius: 5px;
+}
+
+.wonRound {
+    z-index: -1;
+}
+
+.lostRound {
+    z-index: -1;
+}
+
 footer {
     height: 50px;
     width: 100%;
@@ -145,6 +164,6 @@ button {
     font-size: 18px;
     border-radius: 5px;
     border: 2px solid  #14191d;
-    width: 60px;
+    width: 80px;
     height: 30px;
 }

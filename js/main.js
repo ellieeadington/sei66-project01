@@ -10,6 +10,17 @@ let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLet
 
 // created DRY function to draw the different components of the hangman
 
+
+
+
+
+function resetCanvas() {
+var canvas = document.getElementById("hangman-drawing");
+var context = canvas.getContext('2d');
+context.clearRect(0, 0, 300, 300);
+}
+
+
     function draw(mtX,mtY, ltX, ltY ) {
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
@@ -77,6 +88,11 @@ let lettersGuessed = 0;
 let round = 1;
 let difficulty = 0;
 
+resetCanvas();
+
+$('.continue').click(function() {
+    $('.popup').css("z-index","-1")
+})
 
 console.log(sixLetterWord);
 
@@ -90,6 +106,7 @@ function fadeWord() {
     }
 
 function newRound() {
+    resetCanvas();
     round +=1;
     $('.round').text(round);
     difficulty += 1;
@@ -107,6 +124,7 @@ function newRound() {
     console.log(sixLetterWord);
 }
 
+
 function checkRoundStatus() {
   
     if (lettersGuessed == sixLetterWord.length) {
@@ -117,6 +135,8 @@ function checkRoundStatus() {
 
         $('.word > .letter').css({backgroundColor: "#83A75F"});
         setTimeout(fadeWord,2000);
+        $('.wonText').text(`The word was ${sixLetterWord}`);
+        $('.wonRound').css("z-index","1");
         playerScore += 1;
         $('.playerScore').text(playerScore);
         setTimeout(function() {newRound();},3000);
@@ -125,6 +145,8 @@ function checkRoundStatus() {
     } else if (lives.length == 0) {
         $('.word > .letter').css({backgroundColor: "#A75F5F"});
         setTimeout(fadeWord,2000);
+        $('.lostText').text(`The word was ${sixLetterWord}`);
+        $('.lostRound').css("z-index","1");
         computerScore += 1;
         $('.computerScore').text(computerScore);
         setTimeout(function() {newRound();},3000);
@@ -136,6 +158,7 @@ function checkRoundStatus() {
 $('.letters').on('click', '.choose' ,function() { 
 
     let letter = $(this).text();
+    $(this).removeClass("choose"); 
     for (i = 0; i < sixLetterWord.length; i++) {
 
         if(sixLetterWord[i] == letter) {
@@ -153,9 +176,9 @@ $('.letters').on('click', '.choose' ,function() {
                 lives.pop();
                 $('.display-lives').text(lives.join(''));
                 $(this).css({backgroundColor: "rgb(167, 95, 95)"});
+                checkRoundStatus();
                 return false;
-                }
-             
+                }      
 });
 
 

@@ -352,10 +352,7 @@ function newRound() {
     console.log(sixLetterWord);
 }
 ```
-
-ALSO NEED TO INCLUDE A WAY FOR PLAYER TO NOT BE ABLE TO CHOOSE LETTERS WHILST GAME RESETS
-
-#### **Removing and adding a class to the letters in the choose zone to allow users to select a letter when the game is in progress.**
+### Removing and adding a class to the letters in the choose zone to allow users to select a letter when the game is in progress.
 > First I had to add a class into the letters, I named this 'choose'.
 
 > Then I updated my event listener to refer to this class of the letters.
@@ -522,8 +519,58 @@ $('.letters').on('click', '.choose' ,function() {
 });
 
 ```
-NEED TO RESET HANGMAN & FIX ALLOWING A USER TO PRESS ANOTHER LETTER WHEN THEY HAVE LOST
+### Added a resetCanvas function to clear the canvas whenever a round ends:
 
-I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
+``` js
+function resetCanvas() {
+var canvas = document.getElementById("hangman-drawing");
+var context = canvas.getContext('2d');
+context.clearRect(0, 0, 300, 300);
+}
+```
+
+#### **I realised that whenever a letter was chosen, my code allowed for the individual to choose the letter again, so I had to remove the 'choose' class whenever a letter was chosen.**
+
+``` js
+$('.letters').on('click', '.choose' ,function() { 
+
+    let letter = $(this).text();
+    $(this).removeClass("choose"); //<--------- here
+    for (i = 0; i < sixLetterWord.length; i++) {
+
+        if(sixLetterWord[i] == letter) {
+            $(`.word-${i+1}`).text(letter);
+            console.log($(`.word-${i+1}`).text());
+            $(this).text("");
+            lettersGuessed += 1;
+        }
+    }
+    if ($(this).text() == "" || lives.length == 0) {
+        checkRoundStatus();
+    }   else {
+                incorrectGuesses +=1;
+                hangman[incorrectGuesses]();
+                lives.pop();
+                $('.display-lives').text(lives.join(''));
+                $(this).css({backgroundColor: "rgb(167, 95, 95)"});
+                checkRoundStatus();
+                return false;
+                }      
+});
+````
+
+### Pop Up:
+> I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
+
+> Created two popups, one for when the user looses and one for when they win. Set z index to -1;
+
+> when round ends, included switching z index to 1 for the respective popUps depending on outcome of game.
+> created an event listener for the popup so when the user clicks continue, the popup dissapears.
+> added a p tag with classes of 'wonText' and 'lostText' and updated these in the checkRoundStatus function. E.g.
+``` js
+ $('.wonText').text(`The word was ${sixLetterWord}`);
+        $('.wonRound').css("z-index","1");
+```
+<img src="images\hangmanPopUp.PNG">        
 
 
