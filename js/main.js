@@ -88,7 +88,7 @@ let rightLeg = () => {drawThick(218,90,250,120)}
 
 const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
 
-const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
+const roundLevel = ['beginner','easy','average', 'getting harder', 'hard', 'difficult', 'fiendish'];
 
 let wordIndex = 0;
 let word = gameWords[wordIndex]().toUpperCase();
@@ -120,25 +120,42 @@ function fadeWord() {
     }) 
     }
 
+
+function gameOver() {
+        $('.info-value').text('');
+        $('.gameOver').css("z-index","1");
+        if(playerScore > computerScore) {
+            $('.results').text(`Congratulations! You beat the computer by ${playerScore - computerScore} points.`);
+        } else {
+            $('.results').text(`Better luck next time! The computer won by ${computerScore - playerScore} points.`);
+        }
+    } 
+
+
 function newRound() {
     resetCanvas();
     round +=1;
-    $('.round').text(round);
-    difficulty += 1;
-    $('.difficulty').text(roundLevel[difficulty]);
-    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-    $('.display-lives').text(lives.join(''));
-    incorrectGuesses = -1;
-    lettersGuessed = 0;
-    $('.letters > .letter').each(function() {
-        let thisID = $(this).attr('id');
-        $(this).text(thisID);
-        $(this).addClass("choose");
-    });
-    wordIndex += 1;
-    word = gameWords[wordIndex]().toUpperCase();
-    console.log(word);
-    createTiles();
+
+    if(round == 7) {
+    gameOver();
+    } else {
+        $('.round').text(round);
+        difficulty += 1;
+        $('.difficulty').text(roundLevel[difficulty]);
+        lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+        $('.display-lives').text(lives.join(''));
+        incorrectGuesses = -1;
+        lettersGuessed = 0;
+        $('.letters > .letter').each(function() {
+            let thisID = $(this).attr('id');
+            $(this).text(thisID);
+            $(this).addClass("choose");
+        });
+        wordIndex += 1;
+        word = gameWords[wordIndex]().toUpperCase();
+        console.log(word);
+        createTiles();
+    }
 }
 
 
@@ -171,6 +188,7 @@ function checkRoundStatus() {
     } else return false
             
     }
+
 
 $('.letters').on('click', '.choose' ,function() { 
 

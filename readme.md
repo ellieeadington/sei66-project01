@@ -493,6 +493,10 @@ function checkRoundStatus() {
             
     }
 
+function checkGameStatus() {
+    if()
+}    
+
 $('.letters').on('click', '.choose' ,function() { 
 
     let letter = $(this).text();
@@ -613,3 +617,52 @@ function createTiles() {
     }
   }
   ```
+
+  ### Checking if the game has ended:
+
+  > First I created a gameOver popup and gave it a z-index of -1.
+
+  > Next I created a function that would display the popup with the correct info in once a game had ended:
+
+  ``` js
+  function gameOver() {
+        $('.info-value').text('');
+        $('.gameOver').css("z-index","1");
+        if(playerScore > computerScore) {
+            $('.results').text(`Congratulations! You beat the computer by ${playerScore - computerScore} points.`);
+        } else {
+            $('.results').text(`Better luck next time! The computer won by ${computerScore - playerScore} points.`);
+        }
+    } 
+```
+> In the newRound() function, I added the gameOver function in an if statement (might go back and refractor later as this could maybe be a bit hacky):
+
+``` js
+function newRound() {
+    resetCanvas();
+    round +=1;
+
+    if(round == 7) {
+    gameOver(); // <---------added here
+    } else {
+        $('.round').text(round);
+        difficulty += 1;
+        $('.difficulty').text(roundLevel[difficulty]);
+        lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+        $('.display-lives').text(lives.join(''));
+        incorrectGuesses = -1;
+        lettersGuessed = 0;
+        $('.letters > .letter').each(function() {
+            let thisID = $(this).attr('id');
+            $(this).text(thisID);
+            $(this).addClass("choose");
+        });
+        wordIndex += 1;
+        word = gameWords[wordIndex]().toUpperCase();
+        console.log(word);
+        createTiles();
+    }
+}
+```
+
+

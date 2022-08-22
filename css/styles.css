@@ -151,6 +151,10 @@ header {
     z-index: -1;
 }
 
+.gameOver {
+    z-index: -1;
+}
+
 footer {
     height: 50px;
     width: 100%;
