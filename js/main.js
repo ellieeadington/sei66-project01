@@ -136,7 +136,7 @@ function newRound() {
     resetCanvas();
     round +=1;
 
-    if(round == 7) {
+    if(round == 8) {
     gameOver();
     } else {
         $('.round').text(round);

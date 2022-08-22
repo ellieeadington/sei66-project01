@@ -642,7 +642,7 @@ function newRound() {
     resetCanvas();
     round +=1;
 
-    if(round == 7) {
+    if(round == 8) {
     gameOver(); // <---------added here
     } else {
         $('.round').text(round);
@@ -664,5 +664,15 @@ function newRound() {
     }
 }
 ```
+
+### Creating a landing page + linking to exit buttons
+
+> First I created a second HTML and CSS file and added some basic elements with some styling from my original CSS file.
+
+> Next I added a link to the original HTML file in the 'Play Game' button
+
+> I then added links to the exit buttons to return to the homepage which currently looks like:
+
+<img src="images\hangmanHomePage.PNG">
 
 
