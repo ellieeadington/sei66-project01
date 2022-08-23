@@ -1,6 +1,6 @@
 body {
     width:1200px;
-    height: 1000px;
+    height: 900px;
     margin: 20px auto;
     text-align: center;
     font-family: 'Karla', sans-serif;
@@ -21,8 +21,8 @@ header {
     font-family: 'Rubik Wet Paint', cursive;
     background: linear-gradient(
       to right, 
-      #A75F5F, 
-      rgb(127, 23, 23)
+      #a75f5f, 
+      #7f1717
     );
     -webkit-background-clip: text;
     -webkit-text-stroke: 1px  #14191d;
@@ -42,7 +42,7 @@ header {
 }
 
 button {
-    background-color: rgb(154, 78, 78);
+    background-color: #9a4e4e;
     color: #d8d6d5;
     font-size: 18px;
     border-radius: 5px;
@@ -50,3 +50,11 @@ button {
     width: 120px;
     height: 30px;
 }
+
+.scoreBoard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 400px;
+    margin: 20px auto;
+}
+

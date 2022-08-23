@@ -21,8 +21,8 @@ header {
     font-family: 'Rubik Wet Paint', cursive;
     background: linear-gradient(
       to right, 
-      #A75F5F, 
-      rgb(127, 23, 23)
+      #a75f5f, 
+      #7f1717
     );
     -webkit-background-clip: text;
     -webkit-text-stroke: 1px  #14191d;
@@ -48,9 +48,9 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 5px;
     justify-content: space-between;
-    height: 30px;
+    align-content: center;
+    height: 60px;
     width: 100%;
     line-height: 0.6;
     border-radius: 10px;
@@ -58,21 +58,38 @@ header {
     background-color: #d8d6d5;
 }
 
+
 .info {
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: center;
     height:20px;
-    margin: 5px;
     font-size: 16px;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.roundI {
+    width: 100px;
+}
+.diff {
+    width: 230px;
+}
+
+.score {
+    width: 230px;
+}
+
+.lives {
+    width: 360px;
 }
 
 .info-desc {
-    margin: 0;
     height: 100%;
     margin-right: 10px;
-    padding: 0 5px 0 5px;
+    padding-top: 5px;
     font-weight: bold;
 }
 
@@ -80,13 +97,13 @@ header {
     margin: 0;
     margin-right: 10px;
     height: 100%;
-    padding: 0 5px 0 5px;
-    color:  rgb(167, 95, 95);
+    padding-top: 5px;
+    color: #a75f5f;
 }
 
 .display-lives {
     font-size: 30px;
-    margin: 0;
+    margin-bottom: 5px;
 }
 .hangman-zone {
     border: 2px solid #a2a9b0;
@@ -165,7 +182,7 @@ footer {
 }
 
 button {
-    background-color: rgb(154, 78, 78);
+    background-color: #9a4e4e;
     color: #d8d6d5;
     font-size: 18px;
     border-radius: 5px;
@@ -173,3 +190,5 @@ button {
     width: 80px;
     height: 30px;
 }
+
+

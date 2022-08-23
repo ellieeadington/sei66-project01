@@ -9,16 +9,31 @@
     <link rel="stylesheet" href="css/home.css">
     <title>Hangman</title>
 </head>
+<body>
+
 <header>
     <h1 class="fancy">HANGMAN</h1>
 </header>
-
 <div class="play">
     <h1 class="fancy">Can you beat the game?</h1>
     <h2>Press the button to start...</h2>
     <a href="game.html"><button>Start Game</button></a>
 </div>
-<body>
-    
+
+<h2>YOUR TOP 10 SCORES</h2>
+<div class="scoreBoard">
+    <div class="game">Game No.</div>
+    <div class="player">You</div>
+    <div class="computer">Computer</div>
+    <div class="gameList"></div>
+    <div class="playerScoreList"></div>
+    <div class="computerScoreList"></div>
+</div>
+
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script src="js/home.js" type="module"></script>
 </body>
 </html>

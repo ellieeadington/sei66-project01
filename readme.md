@@ -676,3 +676,19 @@ function newRound() {
 <img src="images\hangmanHomePage.PNG">
 
 
+## Day 05
+
+### Created animation for new round values
+``` js
+function animation() {
+    let box2 = $('.info-value');
+
+    for ( i = 30; i >= 20; i-=5) {
+    // calling animation recurssively
+    box2.animate({height: `${i}px`},400);
+    box2.animate({height: "20px"},400);
+}
+}
+
+```
+### Updated round popup info to tell user how many guesses it took for them to guess the word correctly by creating a new 'guess' variable, and adding 1 with every click.
