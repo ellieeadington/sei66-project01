@@ -28,8 +28,10 @@ let difficulty = 0;
 let guess = 0;
 let playerScore = 0;
 let computerScore = 0;
+let dateTime = new Date();
+dateTime = dateTime.toLocaleString("en-UK");
 
-// console.log(word);
+console.log(word);
 
 //----------------------------------CREATE TILES IN THE WORD ZONE----------------------------------// 
 
@@ -111,23 +113,30 @@ resetCanvas();
 
 function update() {
    
+    let dateArr = JSON.parse(localStorage.getItem("dateTime"));
     let psArr = JSON.parse(localStorage.getItem("playerScore"));
     let csArr = JSON.parse(localStorage.getItem("computerScore"));
 
     if(psArr == null) {
+        dateArr = [];
         psArr = [];
         csArr = [];
     }
     
+    console.log(dateArr);
     console.log(psArr);
     console.log(csArr);
 
+    dateArr.push(dateTime);
     psArr.push(playerScore);
     csArr.push(computerScore);
     
+    localStorage.setItem("dateTime", JSON.stringify(dateArr));
     localStorage.setItem("playerScore", JSON.stringify(psArr));
     localStorage.setItem("computerScore", JSON.stringify(csArr)); 
   }
+
+//   localStorage.clear();
 //----------------------------------GAME OVER --------------------------------------//
 
 function gameOver() {
@@ -262,6 +271,12 @@ function fadeWord() {
         $(this).css({backgroundColor: "#adb6be"})
     });
 }
+
+
+
+
+
+
 
 
 
