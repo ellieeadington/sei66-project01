@@ -1,8 +1,8 @@
 body {
     background-image: linear-gradient(to bottom, #424f5c, #36414b, #2a333b, #1f262c, #14191d);
     background-repeat: no-repeat;
-    width:1200px;
-    height: 900px;
+    max-width:100%;
+    max-height: 100%;
     margin: 20px auto;
     font-family: 'Karla', sans-serif;
     font-size: 18px;
@@ -13,7 +13,6 @@ body {
 
 header {
     height: 80px;
-    width: 100%;
     font-size: 36px;
 }
 
@@ -33,7 +32,7 @@ header {
 .game {
     background-color:#c8c7c6;
     height: 600px;
-    width: 90%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-content:flex-end;
@@ -46,57 +45,41 @@ header {
 
 .game-info {
     background-color: #d8d6d5;
-    height: 60px;
+    height: 18%;
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
     line-height: 0.6;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
 .info {
-    width: 200px;
-    height:20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    align-content: center;
-    margin: 5px;
-    padding: 5px;
+    margin-left: 5%;
     font-size: 16px;
 }
 
-.roundI {
-    width: 100px;
-}
-.diff {
-    width: 230px;
-}
-
-.score {
-    width: 230px;
-}
-
 .lives {
-    width: 360px;
+    width: 35%;
 }
 
 .info-desc {
-    height: 100%;
+    padding-top: 10px;
+    height: 50%;
     margin-right: 10px;
-    padding-top: 5px;
     font-weight: bold;
 }
 
 .info-value {
-    height: 100%;
+    padding-top: 10px;
+    height: 50%;
     margin: 0;
     margin-right: 10px;
-    padding-top: 5px;
     color: #a75f5f;
 }
 
@@ -106,7 +89,7 @@ header {
 }
 .hangman-zone {
     background-color: #d8d6d5;
-    height: 500px;
+    height: 60%;
     width: 450px;
     margin: 0 auto;
     border: 2px solid #a2a9b0;
@@ -154,8 +137,8 @@ header {
     position: absolute;
     width: 540px;
     height: 200px;
-    margin-left: 270px;
-    margin-top:  150px;
+    margin-left: 15%;
+    margin-top: 8%;
     box-shadow: 5px 10px #888888;
     border-radius: 5px;
 }
@@ -181,12 +164,37 @@ footer {
 
 button {
     background-color: #9a4e4e;
-    width: 80px;
-    height: 30px;
     border-radius: 5px;
     border: 2px solid  #14191d;
+    padding: 5px 10px;
+    font-size: 16px;
     color: #d8d6d5;
-    font-size: 18px;
 }
 
+@media (max-width: 1500px) {
+
+    .game {
+        height: 80%;
+    }
+
+    .info {
+        margin: 5px 5px;
+        font-size: 14px;
+    }
+
+    .lives {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .letter {
+        height: 30px;
+        width: 30px;
+    }
+
+    .popup {
+        font-size: 14px;
+    }
+}
 

@@ -724,4 +724,10 @@ function animation() {
 
 #### struggling to parse my date time string into a datetime value so cannot sort scores by date too :(
 
-### tidied up functions in home.js    
+### tidied up functions in home.js  and checked for bugs, think we all good
+
+### added defer to my script in html files so script executes after the page has loaded
+
+### made css on main game responsive
+
+### NEED TO MAKE POPUP ALWAYS ALIGNED CENTRE!!!!!!

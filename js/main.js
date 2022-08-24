@@ -265,9 +265,9 @@ $('.letters').on('click', '.choose' ,function() {
 function animation() {
     let box2 = $('.info-value');
 
-    for ( i = 30; i >= 20; i-=5) {
-        box2.animate({height: `${i}px`},400);
-        box2.animate({height: "20px"},400);
+    for ( i = 80; i >= 50; i-=15) {
+        box2.animate({height: `${i}%`},200);
+        box2.animate({height: "50%"},200);
     };
 }
 //----------------------------------HIDE POPUP--------------------------------------//
