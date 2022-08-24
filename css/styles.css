@@ -1,13 +1,13 @@
 body {
+    background-image: linear-gradient(to bottom, #424f5c, #36414b, #2a333b, #1f262c, #14191d);
+    background-repeat: no-repeat;
     width:1200px;
     height: 900px;
     margin: 20px auto;
-    text-align: center;
     font-family: 'Karla', sans-serif;
-    background-image: linear-gradient(to bottom, #424f5c, #36414b, #2a333b, #1f262c, #14191d);
-    background-repeat: no-repeat;
-    color: #424f5c;
     font-size: 18px;
+    color: #424f5c;
+    text-align: center;
 
 }
 
@@ -31,44 +31,43 @@ header {
   }
 
 .game {
+    background-color:#c8c7c6;
+    height: 600px;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-content:flex-end;
-    height: 600px;
-    width: 90%;
     padding: 20px;
     margin: 0 auto;
     border: 3px solid #a2a9b0; 
     border-radius: 10px;
-    background-color:#c8c7c6;
     outline: 2px solid #14191d;
 }
 
 .game-info {
+    background-color: #d8d6d5;
+    height: 60px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: center;
-    height: 60px;
-    width: 100%;
     line-height: 0.6;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: #d8d6d5;
 }
 
-
 .info {
+    width: 200px;
+    height:20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: center;
-    height:20px;
-    font-size: 16px;
-    width: 200px;
     margin: 5px;
     padding: 5px;
+    font-size: 16px;
 }
 
 .roundI {
@@ -94,24 +93,24 @@ header {
 }
 
 .info-value {
+    height: 100%;
     margin: 0;
     margin-right: 10px;
-    height: 100%;
     padding-top: 5px;
     color: #a75f5f;
 }
 
 .display-lives {
-    font-size: 30px;
     margin-bottom: 5px;
+    font-size: 30px;
 }
 .hangman-zone {
-    border: 2px solid #a2a9b0;
     background-color: #d8d6d5;
-    border-radius: 10px;
-    margin: 0 auto;
     height: 500px;
     width: 450px;
+    margin: 0 auto;
+    border: 2px solid #a2a9b0;
+    border-radius: 10px;
 }
 
 
@@ -127,37 +126,36 @@ header {
 }
 
 .letters {
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 20px;
 
 }
 .letter {
-    border: 2px solid #a2a9b0;
-    border-radius: 5px;
+    background-color:#adb6be;
     width: 40px;
     height: 40px;
     margin: 5px; 
-    background-color:#adb6be;
-    
+    border: 2px solid #a2a9b0;
+    border-radius: 5px;  
 }
 
 .word {
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 60px;
 }
 
 .popup {
+    background-color: white;
     position: absolute;
-    margin-left: 270px;
-    margin-top:  150px;
     width: 540px;
     height: 200px;
-    background-color: white;
+    margin-left: 270px;
+    margin-top:  150px;
     box-shadow: 5px 10px #888888;
     border-radius: 5px;
 }
@@ -177,18 +175,18 @@ header {
 footer {
     height: 50px;
     width: 100%;
-    color: #d8d6d5;
     padding-top: 20px;
+    color: #d8d6d5;
 }
 
 button {
     background-color: #9a4e4e;
-    color: #d8d6d5;
-    font-size: 18px;
-    border-radius: 5px;
-    border: 2px solid  #14191d;
     width: 80px;
     height: 30px;
+    border-radius: 5px;
+    border: 2px solid  #14191d;
+    color: #d8d6d5;
+    font-size: 18px;
 }
 
 

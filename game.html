@@ -7,93 +7,101 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Hangman</title>
+    <title>HANGMAN</title>
 </head>
 <body>
+<!------------------------- HEADER ------------------------->
     <header>
         <h1 class="fancy">HANGMAN</h1>
     </header>
+<!------------------------- GAME ZONE ------------------------->
     <main>
         <div class="game">
-                <div class="game-info">
-                    <div class="info roundI">
-                        <p class="info-desc">Round:</p>
-                        <p class="info-value round">1</p>
-                    </div>
-                    <div class="info diff">
-                        <p class="info-desc">Difficulty: </p>
-                        <p class="info-value difficulty">beginner</p>
-                    </div>
-                    <div class="info score">
-                        <p class="info-desc">Player:<p>
-                        <p class="info-value playerScore">0</p>
-                        <p class="info-desc">Computer:</p>
-                        <p class="info-value computerScore">0</p>
-                    </div>
-                    <div class="info lives">
-                        <p class="info-desc">Lives:</p>
-                        <p class="info-value display-lives fancy"></p>
-                    </div>
-                </div>   
-                <div class="hangman-zone">           
-                    <canvas class="hangman" id="hangman-drawing"></canvas>
-                    <div class="word">
-                    </div>
+<!------------------------- GAME INFO ------------------------->
+            <div class="game-info">
+                <div class="info roundI">
+                    <p class="info-desc">Round:</p>
+                    <p class="info-value round">1</p>
                 </div>
-    <div class="choose-letter">
-        <div class="letters">
-        <div class="letter choose" id="A">A</div>
-        <div class="letter choose" id="B">B</div>
-        <div class="letter choose" id="C">C</div>
-        <div class="letter choose" id="D">D</div>
-        <div class="letter choose" id="E">E</div>
-        <div class="letter choose" id="F">F</div>
-        <div class="letter choose" id="G">G</div>
-        <div class="letter choose" id="H">H</div>
-        <div class="letter choose" id="I">I</div>
-        <div class="letter choose" id="J">J</div>
-        <div class="letter choose" id="K">K</div>
-        <div class="letter choose" id="L">L</div>
-        <div class="letter choose" id="M">M</div>
-        <div class="letter choose" id="N">N</div>
-        <div class="letter choose" id="O">O</div>
-        <div class="letter choose" id="P">P</div>
-        <div class="letter choose" id="Q">Q</div>
-        <div class="letter choose" id="R">R</div>
-        <div class="letter choose" id="S">S</div>
-        <div class="letter choose" id="T">T</div>
-        <div class="letter choose" id="U">U</div>
-        <div class="letter choose" id="V">V</div>
-        <div class="letter choose" id="W">W</div>
-        <div class="letter choose" id="X">X</div>
-        <div class="letter choose" id="Y">Y</div>
-        <div class="letter choose" id="Z">Z</div>
-     </div>  
-    </div> 
-    
-    <div class="popup wonRound">
-        <h3>Congratulations - you won the round!</h3>
-        <p class="wonText"></p>
-        <button class="continue">continue</button>
-    </div>
-    <div class="popup lostRound">
-        <h3>You lost the round :(</h3>
-        <p class="lostText"></p>
-        <button class="continue">continue</button>
-    </div>
-    <div class="popup gameOver">
-        <h3>The results are in...</h3>
-        <p class="results"></p>
-        <a href="home.html"><button class="exit">Exit</button></a>
-    </div>
+                <div class="info diff">
+                    <p class="info-desc">Difficulty: </p>
+                    <p class="info-value difficulty">beginner</p>
+                </div>
+                <div class="info score">
+                    <p class="info-desc">Player:<p>
+                    <p class="info-value playerScore">0</p>
+                    <p class="info-desc">Computer:</p>
+                    <p class="info-value computerScore">0</p>
+                </div>
+                <div class="info lives">
+                    <p class="info-desc">Lives:</p>
+                    <p class="info-value display-lives fancy"></p>
+                </div>
+            </div>
+<!------------------------- HANGMAN ZONE ------------------------->
+            <div class="hangman-zone">           
+                <canvas class="hangman" id="hangman-drawing"></canvas>
+                <div class="word"></div>
+            </div>
+<!------------------------- CHOOSE LETTER ZONE ------------------------->
+            <div class="choose-letter">
+                <div class="letters">
+                    <div class="letter choose" id="A">A</div>
+                    <div class="letter choose" id="B">B</div>
+                    <div class="letter choose" id="C">C</div>
+                    <div class="letter choose" id="D">D</div>
+                    <div class="letter choose" id="E">E</div>
+                    <div class="letter choose" id="F">F</div>
+                    <div class="letter choose" id="G">G</div>
+                    <div class="letter choose" id="H">H</div>
+                    <div class="letter choose" id="I">I</div>
+                    <div class="letter choose" id="J">J</div>
+                    <div class="letter choose" id="K">K</div>
+                    <div class="letter choose" id="L">L</div>
+                    <div class="letter choose" id="M">M</div>
+                    <div class="letter choose" id="N">N</div>
+                    <div class="letter choose" id="O">O</div>
+                    <div class="letter choose" id="P">P</div>
+                    <div class="letter choose" id="Q">Q</div>
+                    <div class="letter choose" id="R">R</div>
+                    <div class="letter choose" id="S">S</div>
+                    <div class="letter choose" id="T">T</div>
+                    <div class="letter choose" id="U">U</div>
+                    <div class="letter choose" id="V">V</div>
+                    <div class="letter choose" id="W">W</div>
+                    <div class="letter choose" id="X">X</div>
+                    <div class="letter choose" id="Y">Y</div>
+                    <div class="letter choose" id="Z">Z</div>
+                </div>  
+            </div> 
+<!------------------------- WON ROUND POPUP ------------------------->
+            <div class="popup wonRound">
+                <h3>Congratulations - you won the round!</h3>
+                <p class="wonText"></p>
+                <button class="continue">continue</button>
+            </div>
+<!------------------------- LOST ROUND POPUP ------------------------->
+            <div class="popup lostRound">
+                <h3>You lost the round :(</h3>
+                <p class="lostText"></p>
+                <button class="continue">continue</button>
+            </div>
+<!------------------------- GAME OVER POPUP ------------------------->
+            <div class="popup gameOver">
+                <h3>The results are in...</h3>
+                <p class="results"></p>
+                <a href="home.html"><button class="exit">Exit</button></a>
+            </div>
+        </div>    
     </main>
+<!------------------------- FOOTER ------------------------->
     <footer>
         <a href="home.html"><button class="exit">Exit</button></a>
     </footer>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+<!------------------------- SCRIPT ------------------------->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

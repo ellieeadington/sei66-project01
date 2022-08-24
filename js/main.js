@@ -15,82 +15,6 @@ let sixthWord = () => {return round6[Math.floor(Math.random() * round6.length)]}
 let seventhWord = () => {return round7[Math.floor(Math.random() * round7.length)]};
 
 const gameWords = [firstWord,secondWord,thirdWord,fourthWord,fifthWord,sixthWord,seventhWord];
-
-
-
-//----------------------------------CREATE TILES--------------------------------------//    
-function createTiles() {
-    $('.word').html('');
-
-    for (i = 1; i < word.length + 1; i++) {
-        newDiv =  `<div class="letter word-${i}"></div>`;
-      $('.word').append(newDiv);
-      console.log("i");
-    }
-  }
-//----------------------------------RESET CANVAS--------------------------------------//
-    function resetCanvas() {
-    var canvas = document.getElementById("hangman-drawing");
-    var context = canvas.getContext('2d');
-    context.clearRect(0, 0, 300, 300);
-    }
-
-//----------------------------------DRAW--------------------------------------//
-    function draw(mtX,mtY, ltX, ltY ) {
-    canvas = document.querySelector('#hangman-drawing');
-    ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#36414b';
-    ctx.lineWidth = 4;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(mtX, mtY);
-    ctx.lineTo(ltX, ltY);
-    ctx.stroke();
-}
-
-function drawThick(mtX,mtY, ltX, ltY ) {
-    canvas = document.querySelector('#hangman-drawing');
-    ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#36414b';
-    ctx.lineWidth = 6;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(mtX, mtY);
-    ctx.lineTo(ltX, ltY);
-    ctx.stroke();   
-}
-
-// the head needed it's own function
-
-function head() {
-    canvas = document.querySelector('#hangman-drawing');
-    ctx = canvas.getContext('2d');
-    ctx.beginPath();
-    ctx.strokeStyle = '#36414b';
-    ctx.lineWidth = 5;
-    ctx.lineCap = 'round';
-    ctx.arc(218,48,10,0,Math.PI*2,true);
-    ctx.stroke();
-}
-
-// The rest are below
-
-let gallowsPole = () => {drawThick(70,128,70,22)} //
-let gallowsTop = () => {draw(70,21,220,21)} //
-let gallowsBottom = () => {draw(40,130,140,130)} //
-let gallowsSupport = () => {draw(70,45,110,22)} //
-let rope = () => {drawThick(218,36,218,22)} //
-let neck = () => {drawThick(218,60,218,70)} //
-let leftArm = () => {draw(218,70,180,86)} //
-let rightArm = () => {draw(draw(218,70,260,86))} //
-let body = () => {drawThick(218,70,218,90)} //
-let leftLeg = () => {drawThick(218,90,190,120)}
-let rightLeg = () => {drawThick(218,90,250,120)}
-
-//----------------------------------CONSTANTS & VARS--------------------------------------//
-
-const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
-
 const roundLevel = ['beginner','easy','average', 'getting harder', 'hard', 'difficult', 'fiendish'];
 
 let wordIndex = 0;
@@ -105,58 +29,120 @@ let guess = 0;
 let playerScore = 0;
 let computerScore = 0;
 
+// console.log(word);
+
+//----------------------------------CREATE TILES IN THE WORD ZONE----------------------------------// 
+
+function createTiles() {
+    $('.word').html('');
+
+    for (i = 1; i < word.length + 1; i++) {
+        newDiv =  `<div class="letter word-${i}"></div>`;
+        $('.word').append(newDiv);
+        console.log("i");
+    }
+}
+//----------------------------------RESET CANVAS--------------------------------------//
+
+function resetCanvas() {
+    var canvas = document.getElementById("hangman-drawing");
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, 300, 300);
+}
+//----------------------------------DRAW lINE-------------------------------------//
+
+function draw(mtX, mtY, ltX, ltY) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();
+}
+//----------------------------------DRAW THICK lINE-------------------------------------//
+
+function drawThick(mtX,mtY, ltX, ltY ) {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(mtX, mtY);
+    ctx.lineTo(ltX, ltY);
+    ctx.stroke();   
+}
+//----------------------------------DRAW HEAD-------------------------------------//
+
+function head() {
+    canvas = document.querySelector('#hangman-drawing');
+    ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.strokeStyle = '#36414b';
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.arc(218,48,10,0,Math.PI*2,true);
+    ctx.stroke();
+}
+//----------------------------------DRAW FUNCTIONS FOR EACH PART-------------------------------------//
+
+let gallowsPole = () => {drawThick(70,128,70,22)} //
+let gallowsTop = () => {draw(70,21,220,21)} //
+let gallowsBottom = () => {draw(40,130,140,130)} //
+let gallowsSupport = () => {draw(70,45,110,22)} //
+let rope = () => {drawThick(218,36,218,22)} //
+let neck = () => {drawThick(218,60,218,70)} //
+let leftArm = () => {draw(218,70,180,86)} //
+let rightArm = () => {draw(draw(218,70,260,86))} //
+let body = () => {drawThick(218,70,218,90)} //
+let leftLeg = () => {drawThick(218,90,190,120)}
+let rightLeg = () => {drawThick(218,90,250,120)}
+
+const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
+//----------------------------------START GAME WITH BLANK CANVAS AND NEW TILES-------------------------------------//
+
+createTiles();
+
+resetCanvas();
+//----------------------------------UPDATE SCORES ARR IN LOCAL STORAGE-------------------------------------//
+
 function update() {
-
-
+   
     let psArr = JSON.parse(localStorage.getItem("playerScore"));
     let csArr = JSON.parse(localStorage.getItem("computerScore"));
+
+    if(psArr == null) {
+        psArr = [];
+        csArr = [];
+    }
     
     console.log(psArr);
     console.log(csArr);
 
     psArr.push(playerScore);
-    csArr.push(computerScore)
+    csArr.push(computerScore);
     
     localStorage.setItem("playerScore", JSON.stringify(psArr));
-    localStorage.setItem("computerScore", JSON.stringify(csArr));
-    
-    }
-
-
-//----------------------------------RUN CREATE TILES & CLEAR CAVAS FUNCTION-------------------------------------//
-createTiles();
-
-resetCanvas();
-
-//----------------------------------HIDE POPUP --------------------------------------//
-$('.continue').click(function() {
-    $('.popup').css("z-index","-1")
-})
-
-console.log(word);
-//----------------------------------FADE WORD--------------------------------------//
-function fadeWord() {
-    $('.word > .letter').each(function() {
-        $(this).text("");   
-     })
-    $('.letter').each(function() {
-        $(this).css({backgroundColor: "#adb6be"})
-    }) 
-    }
-
+    localStorage.setItem("computerScore", JSON.stringify(csArr)); 
+  }
 //----------------------------------GAME OVER --------------------------------------//
+
 function gameOver() {
-        $('.info-value').text('');
-        $('.gameOver').css("z-index","1");
-        if(playerScore > computerScore) {
-            $('.results').text(`Congratulations! You beat the computer by ${playerScore - computerScore} points.`);
-        } else {
-            $('.results').text(`Better luck next time! The computer won by ${computerScore - playerScore} points.`);
-        }
-        update();
+    $('.info-value').text('');
+    $('.gameOver').css("z-index","1");
+
+    if (playerScore > computerScore) {
+        $('.results').text(`Congratulations! You beat the computer by ${playerScore - computerScore} points.`);
+    } else {
+        $('.results').text(`Better luck next time! The computer won by ${computerScore - playerScore} points.`);
     }
-    
+    update();
+}    
 //----------------------------------ROUND POP UP --------------------------------------//
+
 function roundPopupInfo() {
     if(lettersGuessed == word.length) {
         $('.wonRound').css("z-index","1");
@@ -173,30 +159,30 @@ function newRound() {
     round +=1;
 
     if(round == 2) {
-    gameOver();
-    } else {
-        guess = 0;
-        $('.round').text(round);
-        difficulty += 1;
-        $('.difficulty').text(roundLevel[difficulty]);
-        lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-        $('.display-lives').text(lives.join(''));
-        animation();
-        incorrectGuesses = -1;
-        lettersGuessed = 0;
-        $('.letters > .letter').each(function() {
-            let thisID = $(this).attr('id');
-            $(this).text(thisID);
-            $(this).addClass("choose");
-        });
-        wordIndex += 1;
-        word = gameWords[wordIndex]().toUpperCase();
-        console.log(word);
-        createTiles();
+        gameOver();
+    }   else {
+            guess = 0;
+            $('.round').text(round);
+            difficulty += 1;
+            $('.difficulty').text(roundLevel[difficulty]);
+            lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+            $('.display-lives').text(lives.join(''));
+            animation();
+            incorrectGuesses = -1;
+            lettersGuessed = 0;
+            $('.letters > .letter').each(function() {
+                let thisID = $(this).attr('id');
+                $(this).text(thisID);
+                $(this).addClass("choose");
+            });
+            wordIndex += 1;
+            word = gameWords[wordIndex]().toUpperCase();
+            console.log(word);
+            createTiles();
     }
 }
-
 //----------------------------------CHECK ROUND STATUS--------------------------------------//
+
 function checkRoundStatus() {
   
     if (lettersGuessed == word.length) {
@@ -225,7 +211,7 @@ function checkRoundStatus() {
             
     }
 
-//----------------------------------CHOOSE LETTER --------------------------------------//
+//----------------------------------PLAYER CHOOSE LETTER--------------------------------------//
 $('.letters').on('click', '.choose' ,function() { 
     guess += 1;
     let letter = $(this).text();
@@ -251,21 +237,31 @@ $('.letters').on('click', '.choose' ,function() {
                 return false;
                 }                  
 });
-
-//------------------------ ANIMATE VALUES ----------------------------//
-
+//----------------------------------ANIMATE GAME INFO--------------------------------------//
 
 function animation() {
     let box2 = $('.info-value');
 
     for ( i = 30; i >= 20; i-=5) {
-    // calling animation recurssively
-    box2.animate({height: `${i}px`},400);
-    box2.animate({height: "20px"},400);
+        box2.animate({height: `${i}px`},400);
+        box2.animate({height: "20px"},400);
+    };
 }
-}
+//----------------------------------HIDE POPUP--------------------------------------//
 
-// --------------------------HIGH SCORES ------------------------//
+$('.continue').click(function() {
+    $('.popup').css("z-index","-1")
+})
+//----------------------------------FADE WORD--------------------------------------//
+
+function fadeWord() {
+    $('.word > .letter').each(function() {
+        $(this).text("");   
+     });
+    $('.letter').each(function() {
+        $(this).css({backgroundColor: "#adb6be"})
+    });
+}
 
 
 
