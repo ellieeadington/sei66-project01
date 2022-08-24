@@ -171,7 +171,7 @@ button {
     color: #d8d6d5;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
 
     .game {
         height: 80%;
