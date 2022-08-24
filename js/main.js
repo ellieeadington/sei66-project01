@@ -36,17 +36,18 @@ console.log(word);
 //----------------------------------CREATE TILES IN THE WORD ZONE----------------------------------// 
 
 function createTiles() {
+    
     $('.word').html('');
 
     for (i = 1; i < word.length + 1; i++) {
         newDiv =  `<div class="letter word-${i}"></div>`;
         $('.word').append(newDiv);
-        console.log("i");
     }
 }
 //----------------------------------RESET CANVAS--------------------------------------//
 
 function resetCanvas() {
+
     var canvas = document.getElementById("hangman-drawing");
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, 300, 300);
@@ -54,6 +55,7 @@ function resetCanvas() {
 //----------------------------------DRAW lINE-------------------------------------//
 
 function draw(mtX, mtY, ltX, ltY) {
+
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
     ctx.strokeStyle = '#36414b';
@@ -67,6 +69,7 @@ function draw(mtX, mtY, ltX, ltY) {
 //----------------------------------DRAW THICK lINE-------------------------------------//
 
 function drawThick(mtX,mtY, ltX, ltY ) {
+
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
     ctx.strokeStyle = '#36414b';
@@ -80,6 +83,7 @@ function drawThick(mtX,mtY, ltX, ltY ) {
 //----------------------------------DRAW HEAD-------------------------------------//
 
 function head() {
+
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
     ctx.beginPath();
@@ -107,7 +111,6 @@ const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head
 //----------------------------------START GAME WITH BLANK CANVAS AND NEW TILES-------------------------------------//
 
 createTiles();
-
 resetCanvas();
 //----------------------------------UPDATE SCORES ARR IN LOCAL STORAGE-------------------------------------//
 
@@ -123,10 +126,6 @@ function update() {
         csArr = [];
     }
     
-    console.log(dateArr);
-    console.log(psArr);
-    console.log(csArr);
-
     dateArr.push(dateTime);
     psArr.push(playerScore);
     csArr.push(computerScore);
@@ -153,10 +152,13 @@ function gameOver() {
 //----------------------------------ROUND POP UP --------------------------------------//
 
 function roundPopupInfo() {
+
     if(lettersGuessed == word.length) {
         $('.wonRound').css("z-index","1");
         $('.wonText').text(`You guessed the word ${word} in ${guess} guesses!`);
-    } else {
+    } 
+    
+    else {
         $('.lostRound').css("z-index","1");
         $('.lostText').text(`The word was ${word}.`);
     }
@@ -164,30 +166,35 @@ function roundPopupInfo() {
 //----------------------------------NEW ROUND --------------------------------------//
 
 function newRound() {
+
     resetCanvas();
     round +=1;
 
-    if(round == 2) {
+    if(round == 8) {
         gameOver();
-    }   else {
-            guess = 0;
-            $('.round').text(round);
-            difficulty += 1;
-            $('.difficulty').text(roundLevel[difficulty]);
-            lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-            $('.display-lives').text(lives.join(''));
-            animation();
-            incorrectGuesses = -1;
-            lettersGuessed = 0;
-            $('.letters > .letter').each(function() {
-                let thisID = $(this).attr('id');
-                $(this).text(thisID);
-                $(this).addClass("choose");
-            });
-            wordIndex += 1;
-            word = gameWords[wordIndex]().toUpperCase();
-            console.log(word);
-            createTiles();
+    }   
+    
+    else {
+        $('.round').text(round);
+         difficulty += 1;
+        $('.difficulty').text(roundLevel[difficulty]);
+        lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
+        $('.display-lives').text(lives.join(''));
+        animation();
+        guess = 0;
+        incorrectGuesses = -1;
+        lettersGuessed = 0;
+
+        $('.letters > .letter').each(function() {
+            let thisID = $(this).attr('id');
+            $(this).text(thisID);
+            $(this).addClass("choose");
+        });
+            
+        wordIndex += 1;
+        word = gameWords[wordIndex]().toUpperCase();
+        console.log(word);
+        createTiles();
     }
 }
 //----------------------------------CHECK ROUND STATUS--------------------------------------//
@@ -205,26 +212,30 @@ function checkRoundStatus() {
         roundPopupInfo();
         playerScore += 1;
         $('.playerScore').text(playerScore);
-        setTimeout(function() {newRound();},3000);
         return false
-
-    } else if (lives.length == 0) {
-        $('.word > .letter').css({backgroundColor: "#a75f5f"});
-        setTimeout(fadeWord,2000);
-        roundPopupInfo();
-        computerScore += 1;
-        $('.computerScore').text(computerScore);
-        setTimeout(function() {newRound();},3000);
-        return false
-    } else return false
+    }   
+    
+    else if (lives.length == 0) {
+            $('.word > .letter').css({backgroundColor: "#a75f5f"});
+            setTimeout(fadeWord,2000);
+            roundPopupInfo();
+            computerScore += 1;
+            $('.computerScore').text(computerScore);
+            return false
+    } 
+    
+    else return false
             
     }
 
 //----------------------------------PLAYER CHOOSE LETTER--------------------------------------//
+
 $('.letters').on('click', '.choose' ,function() { 
+
     guess += 1;
     let letter = $(this).text();
     $(this).removeClass("choose"); 
+
     for (i = 0; i < word.length; i++) {
 
         if(word[i] == letter) {
@@ -234,17 +245,20 @@ $('.letters').on('click', '.choose' ,function() {
             lettersGuessed += 1;
         }
     }
+    
     if ($(this).text() == "" || lives.length == 0) {
         checkRoundStatus();
-    }   else {
-                incorrectGuesses +=1;
-                hangman[incorrectGuesses]();
-                lives.pop();
-                $('.display-lives').text(lives.join(''));
-                $(this).css({backgroundColor: "#a75f5f"});
-                checkRoundStatus();
-                return false;
-                }                  
+    }   
+    
+    else {
+        incorrectGuesses +=1;
+        hangman[incorrectGuesses]();
+        lives.pop();
+        $('.display-lives').text(lives.join(''));
+        $(this).css({backgroundColor: "#a75f5f"});
+        checkRoundStatus();
+        return false;
+    }                  
 });
 //----------------------------------ANIMATE GAME INFO--------------------------------------//
 
@@ -259,14 +273,18 @@ function animation() {
 //----------------------------------HIDE POPUP--------------------------------------//
 
 $('.continue').click(function() {
-    $('.popup').css("z-index","-1")
+    $('.popup').css("z-index","-1");
+    setTimeout(function() {newRound();},2000);
+
 })
 //----------------------------------FADE WORD--------------------------------------//
 
 function fadeWord() {
+
     $('.word > .letter').each(function() {
         $(this).text("");   
      });
+
     $('.letter').each(function() {
         $(this).css({backgroundColor: "#adb6be"})
     });

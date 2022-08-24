@@ -686,10 +686,9 @@ function animation() {
     let box2 = $('.info-value');
 
     for ( i = 30; i >= 20; i-=5) {
-    // calling animation recurssively
-    box2.animate({height: `${i}px`},400);
-    box2.animate({height: "20px"},400);
-}
+        box2.animate({height: `${i}px`},400);
+        box2.animate({height: "20px"},400);
+    } 
 }
 
 ```
@@ -718,3 +717,11 @@ function animation() {
 > try streamline code if you have time
 
 > work on the css if have time
+
+> check if the scripts run when they shouldnt
+
+#### reordered newRound() function so that new game info and word generation would occur after player clicks continue
+
+#### struggling to parse my date time string into a datetime value so cannot sort scores by date too :(
+
+### tidied up functions in home.js    
