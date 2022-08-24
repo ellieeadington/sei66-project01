@@ -280,6 +280,8 @@ $('.letters > .letter').click(function() {
 2. A box pops up telling the player they lost, reveals the correct word, and asks them to click button to continue to next round.
 3. Game info updates to reflect the new round, game resets
 
+### Wrote down my user stories
+
 #### **Fixing my function to test the status of the game**
 > First I created a new function which would run just after the first for loop of my game, ensuring that the last correctly guessed letter would be placed in the word zone, and would also end the game if the player had no lives left, then reset the round:
 
@@ -692,3 +694,27 @@ function animation() {
 
 ```
 ### Updated round popup info to tell user how many guesses it took for them to guess the word correctly by creating a new 'guess' variable, and adding 1 with every click.
+
+### Stored datetime, player score and computer score in local storage
+
+### Ran this function whenever game was over
+
+### created seperate js file to link to homepage to avoid it running when on home (i think);
+
+### created a scoreboard on my homepage
+
+### Spent ages trying to work out how to transform the resulting strings into arrays, created functions in this separate js file to do so by grabbing data from localStorage and transforming it
+
+### got it to work, created a score board which holds up to 10 scores in highest score order (want to also sort by date second, will see if I can do that)
+
+### TO DO
+
+> check for bugs & fix (e.g. where to statements in functions need to be rearranged etc)
+
+> check user stories & update
+
+> update readme file
+
+> try streamline code if you have time
+
+> work on the css if have time
