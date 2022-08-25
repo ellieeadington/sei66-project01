@@ -109,7 +109,6 @@ let rightLeg = () => {drawThick(218,90,250,120)}
 
 const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
 //----------------------------------START GAME WITH BLANK CANVAS AND NEW TILES-------------------------------------//
-
 createTiles();
 resetCanvas();
 //----------------------------------UPDATE SCORES ARR IN LOCAL STORAGE-------------------------------------//
