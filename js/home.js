@@ -8,7 +8,9 @@ let dLFinal = [];
 dL = dL.replaceAll('","',"'").replaceAll('["',"'").replaceAll('"]',"'");
 
 
-// find occurance of delimiters in string
+// finds the index of every occurance of the "'" character in my string of datetimes
+// that I pulled from the local storage, and transformed to replace any unuseful 
+// characters with the "'" character.
 function nth_ocurrence() {
 
   for (let i= 0; i <dL.length; i++) {
@@ -19,7 +21,7 @@ function nth_ocurrence() {
   }
 }
 
-// push datetimes into new arr
+// iterates through the string and pulls out the datetimes, and pushes them into a new array.
 function populateDL() {
 
   for (let i = 0; i < dLIndexArr.length; i++) {
@@ -54,7 +56,11 @@ function updateScoreBoard() {
     }
   }
 
-// sort scores by highest player score (does not sort by date unfortunately)
+// the comp() function checks through each players score in each object in the array, 
+// and checks if the first score is higher or lower than the second score. As I want 
+//to sort by descending order, If a was greater than b, I would give it a value of -1, 
+//so it would be shifted to the bottom of the 'list'. Then when this was sorted, it would 
+// move to the top.
   function comp( a, b ) {
     if ( a.ps > b.ps ){
       return -1;

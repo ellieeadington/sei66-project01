@@ -160,8 +160,6 @@ $('.choice').click(function() {
 
 > I wanted to avoid repetition of some of the statements so I tried to build a function to make the code more DRY that could create each line / head of my hangman by taking in x,y coordinates.
 
-> In order to make the size of my hangman dynamic, I will replace the coordinates with width/2 height/4 etc once I am happy with my sizing.
-
 ``` javascript     
     function draw(mtX,mtY, ltX, ltY ) {
     canvas = document.querySelector('#hangman-drawing');
@@ -340,7 +338,7 @@ $('.letters > .letter').click(function() {
 2. A box pops up telling the player they lost, reveals the correct word, and asks them to click button to continue to next round.
 3. Game info updates to reflect the new round with animation, game resets
 
-### Wrote down my user stories
+### I went into more detail in my user stories which I have put in the sheet linked at the top of the readme.
 
 #### **Fixing my function to test the status of the game**
 > First I created a new function which would run just after the first for loop of my game, ensuring that the last correctly guessed letter would be placed in the word zone, and would also end the game if the player had no lives left, then reset the round:
@@ -421,171 +419,8 @@ function newRound() {
 
 > Then I removed the class once the round had stopped in the checkRoundStatus() function, and added it back in in the newRound() function.
 
-> My code so far looks like this:
-
-``` js
-
-let randomFive = () => {return fiveLetters[Math.floor(Math.random() * fiveLetters.length)]}
-let randomSix = () => {return sixLetters[Math.floor(Math.random() * sixLetters.length)]}
-let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLetters.length)]}
-let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
-
-// created DRY function to draw the different components of the hangman
-
-    function draw(mtX,mtY, ltX, ltY ) {
-    canvas = document.querySelector('#hangman-drawing');
-    ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#36414b';
-    ctx.lineWidth = 4;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(mtX, mtY);
-    ctx.lineTo(ltX, ltY);
-    ctx.stroke();
-}
-
-function drawThick(mtX,mtY, ltX, ltY ) {
-    canvas = document.querySelector('#hangman-drawing');
-    ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#36414b';
-    ctx.lineWidth = 6;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(mtX, mtY);
-    ctx.lineTo(ltX, ltY);
-    ctx.stroke();   
-}
-
-// the head needed it's own function
-
-function head() {
-    canvas = document.querySelector('#hangman-drawing');
-    ctx = canvas.getContext('2d');
-    ctx.beginPath();
-    ctx.strokeStyle = '#36414b';
-    ctx.lineWidth = 5;
-    ctx.lineCap = 'round';
-    ctx.arc(218,48,10,0,Math.PI*2,true);
-    ctx.stroke();
-}
-
-// The rest are below
-
-let gallowsPole = () => {drawThick(70,128,70,22)} //
-let gallowsTop = () => {draw(70,21,220,21)} //
-let gallowsBottom = () => {draw(40,130,140,130)} //
-let gallowsSupport = () => {draw(70,45,110,22)} //
-let rope = () => {drawThick(218,36,218,22)} //
-let neck = () => {drawThick(218,60,218,70)} //
-let leftArm = () => {draw(218,70,180,86)} //
-let rightArm = () => {draw(draw(218,70,260,86))} //
-let body = () => {drawThick(218,70,218,90)} //
-let leftLeg = () => {drawThick(218,90,190,120)}
-let rightLeg = () => {drawThick(218,90,250,120)}
-
-// ----------------------------------------------------------------
-
-const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
-
-const roundLevel = ['beginner','easy','average', 'challenging', 'difficult', 'fiendish'];
-
-let sixLetterWord = randomSix().toUpperCase();
-let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-$('.display-lives').text(lives.join(''));
-let playerScore = 0;
-let computerScore = 0;
-let incorrectGuesses = -1;
-let lettersGuessed = 0;
-let round = 1;
-let difficulty = 0;
-
-
-console.log(sixLetterWord);
-
-function fadeWord() {
-    $('.word > .letter').each(function() {
-        $(this).text("");   
-     })
-    $('.letter').each(function() {
-        $(this).css({backgroundColor: "#adb6be"})
-    }) 
-    }
-
-function newRound() {
-    round +=1;
-    $('.round').text(round);
-    difficulty += 1;
-    $('.difficulty').text(roundLevel[difficulty]);
-    lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-    $('.display-lives').text(lives.join(''));
-    sixLetterWord = randomSix().toUpperCase();
-    incorrectGuesses = -1;
-    lettersGuessed = 0;
-    $('.letters > .letter').each(function() {
-        let thisID = $(this).attr('id');
-        $(this).text(thisID);
-        $(this).addClass("choose");
-    });
-    console.log(sixLetterWord);
-}
-
-function checkRoundStatus() {
-  
-    if (lettersGuessed == sixLetterWord.length) {
-
-        $('.letters > .letter').each(function() {
-            $(this).removeClass("choose");
-        });
-
-        $('.word > .letter').css({backgroundColor: "#83A75F"});
-        setTimeout(fadeWord,2000);
-        playerScore += 1;
-        $('.playerScore').text(playerScore);
-        setTimeout(function() {newRound();},3000);
-        return false
-
-    } else if (lives.length == 0) {
-        $('.word > .letter').css({backgroundColor: "#A75F5F"});
-        setTimeout(fadeWord,2000);
-        computerScore += 1;
-        $('.computerScore').text(computerScore);
-        setTimeout(function() {newRound();},3000);
-        return false
-    } else return false
-            
-    }
-
-function checkGameStatus() {
-    if()
-}    
-
-$('.letters').on('click', '.choose' ,function() { 
-
-    let letter = $(this).text();
-    for (i = 0; i < sixLetterWord.length; i++) {
-
-        if(sixLetterWord[i] == letter) {
-            $(`.word-${i+1}`).text(letter);
-            console.log($(`.word-${i+1}`).text());
-            $(this).text("");
-            lettersGuessed += 1;
-        }
-    }
-    if ($(this).text() == "" || lives.length == 0) {
-        checkRoundStatus();
-    }   else {
-                incorrectGuesses +=1;
-                hangman[incorrectGuesses]();
-                lives.pop();
-                $('.display-lives').text(lives.join(''));
-                $(this).css({backgroundColor: "rgb(167, 95, 95)"});
-                return false;
-                }
-             
-});
-
-```
-### Added a resetCanvas function to clear the canvas whenever a round ends:
+### Reset Canvas function
+> I added a function to clear the canvas whenever a round ends:
 
 ``` js
 function resetCanvas() {
@@ -623,7 +458,7 @@ $('.letters').on('click', '.choose' ,function() {
                 return false;
                 }      
 });
-````
+```
 
 ### Pop Up:
 > I now want to include a pop up that tells the user the status of the round, and gives them on option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has it's own array of words to choose from, based on certain conditions. There are other conditions I need to check for too, such as when the last round has been played, and then decide what happens when the game is over.
@@ -744,9 +579,6 @@ function newRound() {
 
 <img src="images\hangmanHomePage.PNG">
 
-
-## Day 05
-
 ### Created animation for new round values
 ``` js
 function animation() {
@@ -757,6 +589,7 @@ function animation() {
         box2.animate({height: "20px"},400);
     } 
 }
+
 
 ```
 ### Updated round popup info 
@@ -789,3 +622,17 @@ function animation() {
 ### Responsive CSS
 
 > I then worked on using media queries to ensure that my game was responsive and could be played on a smaller screen.
+
+> After I changed my css to make it more dynamic as well as responsive, I had to go back and refractor some of my code. For example, the animate round values function:
+
+``` js
+
+function animation() {
+    let values = $('.info-value');
+
+    for ( i = 80; i >= 50; i-=15) {
+        values.animate({height: `${i}%`},200);
+        values.animate({height: "50%"},200);
+    };
+}
+```

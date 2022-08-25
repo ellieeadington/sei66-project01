@@ -1,3 +1,5 @@
+// array of words for each round
+
 const round1 = ['Abuse','Adult','Agent','Anger','Award','Basis','Beach','Birth','Block','Board','Brain','Bread','Break','Brown','Buyer','Cause','Chain','Chair','Chest','Chief','Child','China','Claim','Clock','Coach','Coast','Court','Cover','Cream','Crime','Crowd','Crown','Cycle','Dance','Death','Depth','Doubt','Draft','Drama','Dream','Drink','Drive','Earth','Enemy','Entry','Event','Faith','Fault','Field','Fight','Final','Focus','Force','Frame','Frank','Front','Fruit','Grant','Group','Guide','Heart','Henry','Horse','Hotel','House','Image','Index','Input','Japan','Jones','Judge','Knife','Laura','Layer','Level','Lewis','Light','Limit','Lunch','Major','March','Match','Metal','Model','Money','Month','Motor','Mouth','Music','Night','Noise','North','Novel','Nurse','Order','Other','Owner','Panel','Paper','Party','Peace','Peter','Phase','Phone','Piece','Pilot','Pitch','Place','Plane','Plant','Plate','Point','Pound','Power','Price','Pride','Prize','Radio','Range','Ratio','Reply','Right','River','Round','Route','Rugby','Scale','Scene','Scope','Score','Sense','Shape','Share','Shift','Shirt','Shock','Sight','Simon','Smile','Smith','Smoke','Sound','South','Space','Spite','Sport','Squad','Stage','Start','State','Steam','Stock','Stone','Store','Study','Style','Sugar','Table','Taste','Theme','Thing','Title','Total','Touch','Tower','Track','Trade','Train','Trend','Trial','Trust','Truth','Uncle','Union','Unity','Value','Video','Visit','Voice','Waste','Watch','Water','While','White','Whole','Woman','World','Youth','One’s','There','Where','Which','Whose','Whoso','Yours','Admit','Adopt','Alter','Argue','Arise','Avoid','Begin','Blame','Bring','Build','Burst','Catch','Check','Clean','Clear','Climb','Close','Count','Enjoy','Enter','Exist','Imply','Laugh','Learn','Leave','Let’s','Prove','Raise','Reach','Refer','Relax','Serve','Solve','Speak','Spend','Split','Stand','Stick','Teach','Thank','Think','Throw','Treat','Would','Write','Above','Acute','Alive','Alone','Angry','Aware','Awful','Basic','Black','Blind','Brave','Brief','Broad','Cheap','Civil','Crazy','Daily','Dirty','Early','Empty','Equal','Exact','Extra','Faint','#VALUE!','Fifth','First','Fresh','Giant','Grand','Great','Harsh','Heavy','Human','Ideal','Joint','Large','Legal','Local','Lucky','Magic','Minor','Moral','Naked','Nasty','Naval','Outer','Plain','Prime','Prior','Proud','Quick','Quiet','Rapid','Ready','Roman','Rough','Royal','Rural','Sharp','Short','Sixth','Smart','Solid','Spare','Super','Thick','Third','Tight','Tough','Upset','Urban','Usual','Vague','Valid','Vital','Wrong','Young','Afore','After','Bothe','Since','Slash','Until','Aback','Abaft','About','Adown','Afoul','Again','Agape','Agogo','Agone','Ahead','Alife','Alike','Aline','Aloft','Along','Aloud','Amply','Amuck','Apace','Apart','Aptly','Arear','Aside','Askew','Badly','Below','Coyly','Dimly','Drily','Dryly','Fatly','Feyly','Fitly','Forte','Forth','Gaily','Gayly','Godly','Haply','Hence','Hotly','Icily','Infra','Intl.','Jildi','Laxly','Lento','Lowly','Madly','Maybe','Never','Newly','Nobly','Often','Ought','Piano','Plonk','Plumb','Quite','Ramen','Redly','Sadly','Secus','Shily','Shyly','Slyly','So-So','Spang','Srsly','Stark','Stour','Tanto','Today','Tomoz','Truly','Twice','Under','Wanly','Wetly','Wryly','Among','Circa','Furth','Minus','Neath'];
 const round2 = ['abroad','acting','action','active','actual','advice','advise','afraid','agency','agenda','almost','always','amount','animal','answer','anyone','anyway','around','artist','aspect','august','author','avenue','backed','barely','beauty','became','become','before','behalf','behind','belief','belong','berlin','beyond','bishop','border','bought','branch','breath','bridge','bright','broken','budget','burden','bureau','camera','cancer','carbon','castle','casual','caught','center','centre','chance','change','charge','choice','chosen','church','circle','client','closed','closer','column','combat','coming','comply','corner','costly','county','couple','course','covers','create','credit','crisis','custom','damage','danger','dealer','debate','decade','decide','defeat','defend','define','demand','depend','deputy','desert','design','desire','detail','detect','device','direct','doctor','domain','double','driven','driver','during','easily','eating','editor','eighth','either','eleven','emerge','empire','employ','enable','ending','energy','engage','engine','enough','ensure','entire','entity','equity','escape','estate','ethnic','except','expand','expect','expert','export','extend','extent','fabric','facing','factor','failed','fairly','family','famous','father','female','figure','filing','finger','finish','fiscal','flight','flying','forced','forest','forget','formal','format','former','foster','fought','fourth','French','friend','future','garden','gather','gender','german','global','golden','ground','growth','guilty','handed','handle','hardly','headed','health','height','holder','honest','impact','import','income','injury','inside','intend','intent','invest','island','itself','jersey','joseph','junior','labour','latest','launch','lawyer','leader','league','leaves','legacy','length','lights','likely','linked','liquid','listen','living','losing','lucent','luxury','mainly','making','manage','manual','margin','marine','marked','market','martin','master','mature','medium','member','memory','mental','merely','merger','method','mining','minute','mobile','modern','modest','module','moment','mostly','mother','motion','moving','murder','museum','mutual','myself','nation','native','nature','nearby','nearly','nights','nobody','normal','notice','notion','number','object','obtain','online','option','orange','origin','output','oxford','packed','palace','parent','partly','patent','people','period','permit','person','phrase','picked','planet','player','please','plenty','pocket','police','policy','prefer','prince','prison','profit','proper','proven','public','pursue','raised','random','rarely','rather','rating','reader','reason','recent','record','reduce','reform','regard','regime','region','relate','relief','remain','remote','remove','repair','repeat','replay','report','rescue','resort','result','retail','retain','return','reveal','review','reward','riding','rising','robust','ruling','safety','salary','sample','saving','saying','scheme','search','season','second','secret','sector','secure','select','senior','series','server','severe','sexual','should','signal','signed','silent','silver','simple','simply','single','sister','slight','social','solely','sought','source','soviet','spirit','spoken','spread','spring','square','stable','status','steady','stolen','strain','stream','strict','strike','string','strong','struck','studio','submit','surely','survey','switch','symbol','system','taking','talent','target','taught','tenant','tender','thanks','theory','thirty','though','threat','thrown','ticket','timely','timing','toward','travel','treaty','trying','twelve','twenty','unable','unique','united','unlike','update','useful','varied','vendor','versus','victim','vision','visual','volume','walker','wealth','weight','window','winter','within','wonder','worker','wright','writer'];
 const round3 = ['Account','Accused','Address','Alleged','Applied','Arrange','Arrival','Assault','Assumed','Assured','Attempt','Attract','Barrier','Battery','Bedroom','Between','Billion','Calling','Carrier','Channel','Classes','Classic','Collect','College','Command','Comment','Connect','Correct','Current','Cutting','Discuss','Essence','Express','Feeling','Fifteen','Filling','Fitness','Freedom','Gallery','Illegal','Illness','Install','Keeping','Killing','Married','Massive','Meeting','Message','Million','Missing','Mission','Offense','Officer','Outdoor','Outlook','Overall','Passage','Passing','Passion','Passive','Pattern','Pioneer','Proceed','Process','Rollout','Running','Session','Setting','Sitting','Sixteen','Skilled','Succeed','Success','Suggest','Summary','Support','Suppose','Telling','Totally','Traffic','Village','Warrant','Wedding','Weekend','Willing','Winning','Witness','Written'];
@@ -6,6 +8,7 @@ const round5 = ['accepted','accident','accuracy','accurate','actually','addition
 const round6 = ['absolute','abstract','academic','achieved','acquired','activity','adequate','adjacent','adjusted','advanced','advisory','advocate','aircraft','although','aluminum','analysis','anything','anywhere','argument','artistic','athletic','audience','autonomy','aviation','bachelor','bacteria','becoming','benjamin','birthday','boundary','breaking','building','calendar','campaign','capacity','casualty','catching','category','Catholic','cautious','ceremony','chairman','champion','chemical','children','circular','civilian','clearing','clinical','clothing','colonial','colorful','complain','complete','composed','compound','comprise','computer','conclude','concrete','conflict','confused','consider','constant','consumer','continue','contract','contrary','contrast','convince','coverage','covering','creation','creative','criminal','critical','cultural','customer','database','daughter','daylight','deadline','deciding','decision','decrease','definite','delicate','delivery','describe','designer','detailed','diabetes','dialogue','diameter','directly','director','disabled','disaster','disclose','discount','discover','disorder','disposal','distance','distinct','district','dividend','division','doctrine','document','domestic','dominant','dominate','doubtful','dramatic','duration','dynamics','earnings','economic','educated','election','electric','eligible','emerging','emphasis','endeavor','engaging','enormous','entirely','entrance','envelope','equality','equation','estimate','evaluate','eventual','everyday','everyone','evidence','exchange','exciting','exercise','explicit','exposure','extended','external','facility','familiar','featured','festival','finished','flagship','flexible','floating','forecast','foremost','formerly','fraction','franklin','frequent','friendly','frontier','function','generate','generous','genomics','governor','graduate','graphics','grateful','guardian','guidance','handling','hardware','heritage','highland','historic','homepage','hospital','humanity','identify','identity','ideology','imperial','incident','included','increase','indicate','indirect','industry','informal','informed','inherent','initiate','inspired','instance','integral','intended','interact','interest','interior','internal','interval','intimate','intranet','invasion','involved','isolated','judgment','judicial','junction','keyboard','landlord','language','laughter','learning','leverage','lifetime','lighting','likewise','limiting','literary','location','magazine','magnetic','maintain','majority','marginal','material','maturity','maximize','meantime','measured','medicine','medieval','memorial','merchant','midnight','military','minimize','minister','ministry','minority','mobility','modeling','moderate','momentum','monetary','moreover','mortgage','mountain','mounting','movement','multiple','national','negative','northern','numerous','observer','operator','optimism','optional','ordinary','organize','original','overcome','overhead','overseas','overview','painting','parental','patented','patience','peaceful','periodic','personal','persuade','petition','physical','pipeline','platform','pleasant','pleasure','politics','portable','portrait','position','positive','powerful','practice','precious','pregnant','presence','preserve','previous','printing','priority','probable','probably','producer','profound','property','proposal','prospect','protocol','provided','provider','province','publicly','purchase','pursuant','quantity','question','rational','reaction','received','receiver','recovery','regional','register','relation','relative','relevant','reliable','reliance','religion','remember','renowned','repeated','reporter','republic','required','research','reserved','resident','resigned','resource','response','restrict','revision','rigorous','romantic','sampling','scenario','schedule','scrutiny','seasonal','secondly','security','sensible','sentence','separate','sequence','sergeant','shortage','shoulder','simplify','situated','slightly','software','solution','somebody','somewhat','southern','speaking','specific','spectrum','sporting','standard','standing','standout','sterling','straight','strategy','strength','striking','suburban','suitable','superior','surgical','surprise','survival','symbolic','sympathy','syndrome','tactical','tailored','takeover','tangible','taxation','taxpayer','teaching','tendency','terminal','thinking','thorough','thousand','together','touching','tracking','training','transfer','traveled','treasury','triangle','tropical','turnover','ultimate','universe','unlawful','unlikely','valuable','variable','vertical','victoria','violence','volatile','weighted','whatever','whenever','wherever','wildlife','withdraw','workshop','yourself'];
 const round7 =['Abandonee','Babblings','Cabaletta','Caballero','Eagerness','Eaglewood','Earliness','Sabadilla','Sabbatize','Tabbouleh','Vaccinate','Vaccinees','Quizzical','Squizzing','Whizzbang','Jazziness','Showbizzy','Chazzanim','Chazzenim','Scuzzball','Pizzalike','Blizzardy','Embezzler','Schnozzle','Jackknife','Mezzaluna','Paparazzi','Paparazzo','Pizzicati','Pizzicato','Shemozzle','Applejack','Fuzziness','Kibbutzim','Krummholz','Mezzanine','Muzziness','Pozzolana','Fizziness','Frizzante','Grandezza','Jackstaff','Mezzotint','Quillback','Outdazzle','Pizzerias','Poppycock','Bubblejet','Communize','Dizziness','Joypopper','Quaffable','Bamboozle','Checkbook','Kibbitzer','Pepperbox','Piggyback','Quillwork','Affluenza','Buckyball','Chockfull','Crowquill','Jellyfish','Jellylike','Jewellike','Moonquake','Quickness','Tzaddikim','Zoophilic','Zucchetto','Affixable','Affixment','Billycock','Breezeway','Chaffinch','Coequally','Crookback','Djellabah','Gimmickry','Gogglebox','Immunizer','Jellybean','Joyfuller','Jumpiness','Maximally','Mollymawk','Mummichog','Piggybank','Puppylike','Schmoozer','Squabbler','Woodchuck','Zestfully','Blackball','Blackpoll','Blackwall','Bulldozer','Cellblock','Cookshack','Creampuff','Currajong','Effluvium','Effluxion','Flippancy','Freezable','Gallicize','Heffalump','Immovably','Juneberry','Kazillion','Lemmatize','Mannequin','Occupancy','Panzootic','Pappyshow','Passivize','Pickproof','Pullquote','Quarryman','Quarrymen','Queenfish','Queenlike','Queenship','Rebbetzin','Rebbitzin','Rubberize','Summarize','Sweepback','Syllabize','Unequally','Wayzgoose','Wheelback','Zebrawood','Zippiness','Zircalloy','Zookeeper','Accompany','Appetizer','Babyccino','Bafflegab','Bajillion','Bazillion','Bizarrely','Blackbutt','Blackwood','Bombproof','Brummagem','Bullfinch','Buxomness','Carryback','Chaffweed','Checkroom','Clubbable','Colloquia','Commodify','Crookneck','Cubbyhole','Currycomb','Epizootic','Hammerkop','Hollyhock','Jarringly','Jeeringly','Jellyroll','Jitterbug','Joylessly','Junketeer','Kerfuffle','Lexically','Mammiform','Matchbook','Numbskull','Philippic','Pillarbox','Preoccupy','Punchball','Puppyhood','Quillwort','Ruggedize','Syllogize','Wakefully','Woodblock','Zoophilia','Zoosporic','Accumbent','Acquittal','Bakeapple','Banquette','Bellyflop','Biaxially','Bookmaker','Bootblack','Bumblebee','Chalkhill','Cheechako','Civically','Coaxially','Coccidium','Coccygeal','Colluvium','Communism','Cubically','Excessive','Filmmaker','Flaccidly','Flammable','Flappable','Foppishly','Gazillion','Gunnysack','Hackberry','Hawksbill','Hellenize','Helpfully','Hillclimb','Immixture','Immovable','Jollytail','Joyridden','Juiceless','Juiciness','Krummhorn','Mammalogy','Mammogram','Maxillary','Metallize','Midweekly','Mullygrub','Occupance','Palletize','Pelletize','Plaquette','Playfully','Psalmbook','Pushfully','Quittance','Razorbill','Shellback','Skippable','Slaphappy','Speedbump','Thingummy','Toxically','Wobbegong','Zettabyte','Zillionth','Acceptive','Acclivity','Acquitter','Affective','Annualize','Bacchanal','Backcross','Bashfully','Beachball','Bloodbank','Bombshell','Bookshelf','Booziness','Briquette','Buckteeth','Bucktooth','Bullfight','Catchpoll','Chauffeur','Checkless','Cheekbone','Chickadee','Cocksfoot','Cofferdam','Commencer','Commingle','Community'];
 
+// function to return random word out of each array
 let firstWord = () => {return round1[Math.floor(Math.random() * round1.length)]};
 let secondWord = () => {return round2[Math.floor(Math.random() * round2.length)]};
 let thirdWord = () => {return round3[Math.floor(Math.random() * round3.length)]};
@@ -14,13 +17,14 @@ let fifthWord = () => {return round5[Math.floor(Math.random() * round5.length)]}
 let sixthWord = () => {return round6[Math.floor(Math.random() * round6.length)]};
 let seventhWord = () => {return round7[Math.floor(Math.random() * round7.length)]};
 
+// array of random word generator functions and round levels
 const gameWords = [firstWord,secondWord,thirdWord,fourthWord,fifthWord,sixthWord,seventhWord];
 const roundLevel = ['beginner','easy','average', 'getting harder', 'hard', 'difficult', 'fiendish'];
 
 let wordIndex = 0;
 let word = gameWords[wordIndex]().toUpperCase();
 let lives = [' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ ',' ♥ '];
-$('.display-lives').text(lives.join(''));
+$('.display-lives').text(lives.join('')); // joins values in the lives array so they display correctly
 let incorrectGuesses = -1;
 let lettersGuessed = 0;
 let round = 1;
@@ -34,7 +38,8 @@ dateTime = dateTime.toLocaleString("en-UK");
 console.log(word);
 
 //----------------------------------CREATE TILES IN THE WORD ZONE----------------------------------// 
-
+// creates blank tiles, the number of which is determined by the length of the word in the word array for the round.
+// first the .word div html is reset to null, and then the divs are added in one at a time as child elements.
 function createTiles() {
     
     $('.word').html('');
@@ -45,7 +50,7 @@ function createTiles() {
     }
 }
 //----------------------------------RESET CANVAS--------------------------------------//
-
+// uses the 'clearRect' function to clear pixels within the canvas.
 function resetCanvas() {
 
     var canvas = document.getElementById("hangman-drawing");
@@ -53,7 +58,7 @@ function resetCanvas() {
     context.clearRect(0, 0, 300, 300);
 }
 //----------------------------------DRAW lINE-------------------------------------//
-
+// re-usable function that accepts the x & y coordinates for each line
 function draw(mtX, mtY, ltX, ltY) {
 
     canvas = document.querySelector('#hangman-drawing');
@@ -67,7 +72,7 @@ function draw(mtX, mtY, ltX, ltY) {
     ctx.stroke();
 }
 //----------------------------------DRAW THICK lINE-------------------------------------//
-
+// same as above, but draws a thicker line (had some issues with making verticle and horizontal lines the same width)
 function drawThick(mtX,mtY, ltX, ltY ) {
 
     canvas = document.querySelector('#hangman-drawing');
@@ -81,7 +86,7 @@ function drawThick(mtX,mtY, ltX, ltY ) {
     ctx.stroke();   
 }
 //----------------------------------DRAW HEAD-------------------------------------//
-
+// function to draw the head by creating an oval in the correct position.
 function head() {
 
     canvas = document.querySelector('#hangman-drawing');
@@ -94,7 +99,6 @@ function head() {
     ctx.stroke();
 }
 //----------------------------------DRAW FUNCTIONS FOR EACH PART-------------------------------------//
-
 let gallowsPole = () => {drawThick(70,128,70,22)} //
 let gallowsTop = () => {draw(70,21,220,21)} //
 let gallowsBottom = () => {draw(40,130,140,130)} //
@@ -107,12 +111,16 @@ let body = () => {drawThick(218,70,218,90)} //
 let leftLeg = () => {drawThick(218,90,190,120)}
 let rightLeg = () => {drawThick(218,90,250,120)}
 
+// created an array of the functions so that when each letter is guessed incorrectly, the index increases by 1
 const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,leftArm, rightArm,body,leftLeg, rightLeg];
 //----------------------------------START GAME WITH BLANK CANVAS AND NEW TILES-------------------------------------//
 createTiles();
 resetCanvas();
 //----------------------------------UPDATE SCORES ARR IN LOCAL STORAGE-------------------------------------//
-
+// parses the JSON string in local storage into a JS string
+// if the arrays that hold the values are null (player hasn't completed a game) then create arrays
+// push the values into their respective arrays
+// setItem updates the key values in the local storage
 function update() {
    
     let dateArr = JSON.parse(localStorage.getItem("dateTime"));
@@ -136,7 +144,8 @@ function update() {
 
 //   localStorage.clear();
 //----------------------------------GAME OVER --------------------------------------//
-
+// set the info values to null, and show the 'game over' popup.
+// set the text according to the outcome of the game
 function gameOver() {
     $('.info-value').text('');
     $('.gameOver').css("z-index","1");
@@ -149,7 +158,7 @@ function gameOver() {
     update();
 }    
 //----------------------------------ROUND POP UP --------------------------------------//
-
+// when the round ends, show the popup, and set the text according to the outcome of the round
 function roundPopupInfo() {
 
     if(lettersGuessed == word.length) {
@@ -163,7 +172,10 @@ function roundPopupInfo() {
     }
 }     
 //----------------------------------NEW ROUND --------------------------------------//
-
+// reset the canvas, increase the round number, choose the next item in the difficulty array, set lives back to 11
+// animate the round values, reset the variables, set the chosen letters text back to it's id (the letter), and add
+// it's class back in so that the event listener will work again. Choose a new word, and lay out the tiles accordingly.
+// else, run the gameOver() function.
 function newRound() {
 
     resetCanvas();
@@ -197,7 +209,9 @@ function newRound() {
     }
 }
 //----------------------------------CHECK ROUND STATUS--------------------------------------//
-
+// Remove the choose letter class. If the player won, change the background colour of the word tiles to green,
+// run the function that fades out the text in the letters, unhide the popup, increase the players score by 1.
+// If they loose, set background color of the tiles to red, and unhide the popup, increase the computers score by 1.
 function checkRoundStatus() {
   
     if (lettersGuessed == word.length) {
@@ -215,12 +229,17 @@ function checkRoundStatus() {
     }   
     
     else if (lives.length == 0) {
-            $('.word > .letter').css({backgroundColor: "#a75f5f"});
-            setTimeout(fadeWord,2000);
-            roundPopupInfo();
-            computerScore += 1;
-            $('.computerScore').text(computerScore);
-            return false
+
+        $('.letters > .letter').each(function() {
+            $(this).removeClass("choose");
+        });
+
+        $('.word > .letter').css({backgroundColor: "#a75f5f"});
+        setTimeout(fadeWord,2000);
+        roundPopupInfo();
+        computerScore += 1;
+        $('.computerScore').text(computerScore);
+        return false
     } 
     
     else return false
@@ -228,7 +247,12 @@ function checkRoundStatus() {
     }
 
 //----------------------------------PLAYER CHOOSE LETTER--------------------------------------//
-
+// every time a player clicks on a letter, increase the number of guesses variable by 1. Remove the letter's class so
+// that it cannot be chosen again. Iterate through the word, and populate each respective tile with the letter if it
+// is a match. Remove the text in the letter in the choose zone, so the player knows it has already been used. Increase
+// the letters guessed variable by 1 for the checkRoundStatus() function. If the letter is not a match, increase incorrect
+// guesses by 1, remove a life from the 'lives' array and display, set background color of the letter to red, and 
+// run the checkRoundStatus() function.
 $('.letters').on('click', '.choose' ,function() { 
     guess += 1;
     let letter = $(this).text();
@@ -259,13 +283,14 @@ $('.letters').on('click', '.choose' ,function() {
     }                  
 });
 //----------------------------------ANIMATE GAME INFO--------------------------------------//
-
+// function that makes the game info values to appear to bounce up and down by increasing their height
+// to 80%, back to 50%, back up to 65% and down to 50%.
 function animation() {
-    let box2 = $('.info-value');
+    let values = $('.info-value');
 
     for ( i = 80; i >= 50; i-=15) {
-        box2.animate({height: `${i}%`},200);
-        box2.animate({height: "50%"},200);
+        values.animate({height: `${i}%`},200);
+        values.animate({height: "50%"},200);
     };
 }
 //----------------------------------HIDE POPUP--------------------------------------//
@@ -276,7 +301,7 @@ $('.continue').click(function() {
 
 })
 //----------------------------------FADE WORD--------------------------------------//
-
+// remove the text of each letter and set background colour back to grey.
 function fadeWord() {
 
     $('.word > .letter').each(function() {
