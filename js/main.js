@@ -230,7 +230,6 @@ function checkRoundStatus() {
 //----------------------------------PLAYER CHOOSE LETTER--------------------------------------//
 
 $('.letters').on('click', '.choose' ,function() { 
-
     guess += 1;
     let letter = $(this).text();
     $(this).removeClass("choose"); 
@@ -288,6 +287,7 @@ function fadeWord() {
         $(this).css({backgroundColor: "#adb6be"})
     });
 }
+
 
 
 
