@@ -1,8 +1,11 @@
+html, body{ 
+    height: 100%;
+   }
+
 body {
     background-image: linear-gradient(to bottom, #424f5c, #36414b, #2a333b, #1f262c, #14191d);
     background-repeat: no-repeat;
     max-width:100%;
-    max-height: 100%;
     margin: 0 auto;
     font-family: 'Karla', sans-serif;
     font-size: 18px;
