@@ -35,7 +35,7 @@ header {
 
 .game {
     background-color:#c8c7c6;
-    height: 600px;
+    height: 650px;
     width: 65%;
     display: flex;
     flex-direction: column;
@@ -106,17 +106,19 @@ header {
    margin: 0 auto;
 }
 .choose-letter {
-    height: 40%;
+    height: 45%;
     width: 70%;
     margin: 0 auto;
 }
 
+.choose-text {
+    margin-top: 15px;
+}
 .letters {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
 
 }
 .letter {
@@ -184,7 +186,7 @@ button {
     
     
     .game {
-        height: 550px;
+        height: 600px;
         width: 80%;
     }
 

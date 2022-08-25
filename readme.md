@@ -23,6 +23,15 @@
 - If the player has played the game less than 10 times, their score will be added to the scoreboard. If they have played more than 10 times, their score will only be displayed if it is within their top 10 highest scores.
 - Responsive design, so the game can be played on a large or smaller screen.
 
+## User Stories
+<a href="https://docs.google.com/spreadsheets/d/1jpsbb1sNimso9Y1-Ci903mLQZCGnRS81w8l61reBdIY/edit#gid=595332615&range=B1">Linked here</a>
+
+## First Wireframe
+<a href="https://docs.google.com/spreadsheets/d/1jpsbb1sNimso9Y1-Ci903mLQZCGnRS81w8l61reBdIY/edit#gid=916784643&range=E4">Linked here</a>
+
+## Initial Ideation
+<a href="https://www.figma.com/file/n33FCJ6FcWIYjeCRN3ccB6/Project-1-Ideation---Hangman?node-id=0%3A1">Linked here</a>
+
 ## Technologies used
 
 - CSS
@@ -39,6 +48,11 @@
 
 - Making the game 2 player
 - Saving game data in local server in case of accidentally closing down the page.
+
+## Determining the result of the game
+
+## My favourite functions
+
 
 ## My documentation on building the game
 
