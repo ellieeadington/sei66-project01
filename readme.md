@@ -22,7 +22,23 @@
 - At the end of the game, a pop up will appear telling the user that the game is over, and the results of the game. The player will then click on the exit button and return to the home page.
 - If the player has played the game less than 10 times, their score will be added to the scoreboard. If they have played more than 10 times, their score will only be displayed if it is within their top 10 highest scores.
 - Responsive design, so the game can be played on a large or smaller screen.
-  
+
+## Technologies used
+
+- CSS
+- HTML
+- JS
+- JQuery
+
+## Unresolved problems
+
+- Finding simpler way to get the data from the local server
+- transforming my datetime string from the local server back into a number for sorting and displaying it as a date rather than a string
+
+## Goals not met
+
+- Making the game 2 player
+- Saving game data in local server in case of accidentally closing down the page.
 
 ## My documentation on building the game
 
