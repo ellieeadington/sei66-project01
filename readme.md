@@ -1,6 +1,30 @@
 # project1-hangman
 
-## Day 01
+## Key Features
+
+- Home screen which displays the name of the game, a button to click to continue to play the game, and a score board, which displays the players top 10 scores.
+- Player vs computer - player makes the guess, computer generates the word
+- Player makes a guess by clicking on a letter. If the guess is correct, it will appear in the correct position in the word. If the guess is incorrect, the tile will be flagged in red. Their 'lives' will also decrease by 1.
+- Player cannot choose a letter twice.
+- With every incorrect guess, one line of the hangman will be drawn in the canvas.
+- 7 rounds (so there would always be a winner)
+- Rounds get harder with each level:
+    - Round1 = 5 letter words - no repeating letters
+    - Round2 = 6 letter words - no repeating letters
+    - Round3 = 7 letter words - repeating letters
+    - Round4 = 7 letter words - no repeating letters
+    - Round5 = 8 letter words - repeating letters
+    - Round6 = 8 letter words - no repeating letters
+    - Round7 = 9 letter words - repeating letters
+- Each time a new round begins, the info of the round number, the difficulty, the scores and number of lives for the round will be updated, and will be highlighted to the user by bouncing up and down twice.
+- Pop up's at the end of each round tell the user if they won or lost, and what the correct word was, with a button to continue to the next round.
+- There is an exit button, so the player can leave the game and return to the homescreen at any time.
+- At the end of the game, a pop up will appear telling the user that the game is over, and the results of the game. The player will then click on the exit button and return to the home page.
+- If the player has played the game less than 10 times, their score will be added to the scoreboard. If they have played more than 10 times, their score will only be displayed if it is within their top 10 highest scores.
+- Responsive design, so the game can be played on a large or smaller screen.
+  
+
+## My documentation on building the game
 
 ### Getting Started
 
@@ -34,8 +58,6 @@ let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLet
 ```
 ### HTML & CSS Wireframe
 > I then started on my wireframe in VS Code.
-
-## Day 02
 
 ### The wireframe
 > After messing around with my wireframe and brainstorming, I decided that I wanted my game to display differently. I wanted my game to include 5 main sections:
@@ -206,7 +228,6 @@ let computerScore = 0;
 ```    
 > I was encountering problems with this code running before the last letter was placed in the word zone, so I decided to come back to this later.
 
-## Day 03
 ### Changing elements of the game
 > I realised that there was no need for the 'discard zone' given that it would be obvious once a letter had been chosen incorrectly, as the tile could be highlighted in red, for example, in the 'choose letter zone'. I decided first to remove the relevant HTML, CSS and JS, and then restructure my game so that I was happy with all of the components and the layout. I got slightly carried away with some of the styling of the game, as it was a nice break from writing the logic - haha! I had to update my canvas JS draw co-ordinates too. It was very difficult to get the horizontal and vertical lines to appear to be the same width, so I had to create two draw functions, one that drew thicker lines. Code below:
 
@@ -239,8 +260,6 @@ function drawThick(mtX,mtY, ltX, ltY ) {
 >This was the look of my game once I finished:
 <img src="images\hangman.png">
 
-## Day 04
-
 ### Showing incorrect letter guesses in the 'choose letter zone':
 > Now that I no longer have the 'discard zone' I needed to create a way for the user to know that the letters they chose were incorrect. I added this into my code in the case of an incorrect guess being made:
 ``` js
@@ -272,13 +291,13 @@ $('.letters > .letter').click(function() {
 
 > Next I determined what I wanted to happen when the round ends:
 #### **Guessing the word correctly:**
-1. word highlights in green, with some animation.
-2. A box pops up telling the player they one, and asks them to click button to continue to next round
-3. Game info updates to reflect the new round, game resets
+1. word highlights in green.
+2. A box pops up telling the player they won, and asks them to click button to continue to next round
+3. Game info updates to reflect the new round with animation, game resets
 #### **Guessing the word incorrectly:**
-1. word highlights in red, with some animation.
+1. word highlights in red.
 2. A box pops up telling the player they lost, reveals the correct word, and asks them to click button to continue to next round.
-3. Game info updates to reflect the new round, game resets
+3. Game info updates to reflect the new round with animation, game resets
 
 ### Wrote down my user stories
 
@@ -584,12 +603,19 @@ $('.letters').on('click', '.choose' ,function() {
 > I decided I wanted 7 rounds so there would never be a draw, and determined what the conditions the words chosen within each round must meet, so I created my list of words between 5 and 9 letters in a google sheet, used formulas to filter them for each round, used concatenation to push them into arrays and added them into my js file. Sheet linked <a href="https://docs.google.com/spreadsheets/d/1jpsbb1sNimso9Y1-Ci903mLQZCGnRS81w8l61reBdIY/edit?usp=sharing">here</a> to show logic.
 
 > Round1 = 5 letter words - no repeating letters
+
 > Round2 = 6 letter words - no repeating letters
+
 > Round3 = 7 letter words - repeating letters
+
 > Round4 = 7 letter words - no repeating letters
+
 > Round5 = 8 letter words - repeating letters
+
 > Round6 = 8 letter words - no repeating letters
+
 > Round7 = 9 letter words - repeating letters
+
 
 > I updated the functions to generate the random words, and put them in an array.
 
@@ -692,42 +718,33 @@ function animation() {
 }
 
 ```
-### Updated round popup info to tell user how many guesses it took for them to guess the word correctly by creating a new 'guess' variable, and adding 1 with every click.
+### Updated round popup info 
 
-### Stored datetime, player score and computer score in local storage
+> I updated the popup to tell user how many guesses it took for them to guess the word correctly by creating a new 'guess' variable, and adding 1 with every click. I also updated the css so it was centered correctly.
 
-### Ran this function whenever game was over
+### Local storage
 
-### created seperate js file to link to homepage to avoid it running when on home (i think);
+> Next I worked on logging the game number, player score and computer score at the end of the game in local storage. I tested it by getting the items and checking that they were pulling correctly into my document. I added this as a nested function within my gameOver() function, so that it would run whenever the game ended.
 
-### created a scoreboard on my homepage
+> I then created a separate js file to link to the homepage, to avoid the main js file running when on home, as well as updating my scripts to include 'defer'.
 
-### Spent ages trying to work out how to transform the resulting strings into arrays, created functions in this separate js file to do so by grabbing data from localStorage and transforming it
+### Scoreboard on my homepage
 
-### got it to work, created a score board which holds up to 10 scores in highest score order (want to also sort by date second, will see if I can do that)
+> I spent a while trying to work out how to transform the resulting strings into arrays, created functions in this separate js file to do so by grabbing data from localStorage and transforming it. As the data were in three string formats, I worked on transforming them into arrays so that I could display them correctly in my homepage.
 
-### TO DO
+> I then used a grid layout to create my score board which holds up to 10 scores in highest score order (want to also sort by date second, will see if I can do that).
 
-> check for bugs & fix (e.g. where to statements in functions need to be rearranged etc)
+### Bug checking
+> I checked for bugs by playing the game, and noticed that my checkRoundStatus() function needed rearranging, so that the game info did not update and a new word would not be generated until the player pressed continue.
 
-> check user stories & update
+### Displaying datetime played in Scoreboard rather than game number
 
-> update readme file
+> I struggled with this initially, but was able to replace game number with the datetime and added this new code into my functions where applicable. As the dates were in string format, I had to create a logic to be able to split the strings where I wanted them to be split, and then create an array of objects for my datetimes, player scores and computer scores to be able to iterate through them and display the correct info side by side in the scoreboard. I also created a function to sort the data by highest player score. I was struggling to parse the datetimes back into valid dates, and so was unable to sort the highest scores by most recent datetime.
 
-> try streamline code if you have time
+### Tidying up my code
 
-> work on the css if have time
+> I tidied up my code so that it was well structured and removed any code that was no longer needed.
 
-> check if the scripts run when they shouldnt
+### Responsive CSS
 
-#### reordered newRound() function so that new game info and word generation would occur after player clicks continue
-
-#### struggling to parse my date time string into a datetime value so cannot sort scores by date too :(
-
-### tidied up functions in home.js  and checked for bugs, think we all good
-
-### added defer to my script in html files so script executes after the page has loaded
-
-### made css on main game responsive
-
-### NEED TO MAKE POPUP ALWAYS ALIGNED CENTRE!!!!!!
+> I then worked on using media queries to ensure that my game was responsive and could be played on a smaller screen.
