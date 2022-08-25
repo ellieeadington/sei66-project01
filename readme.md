@@ -51,7 +51,18 @@
 
 ## Determining the result of the game
 
+> This was fairly simple. I decided to have 7 rounds, so that there would always be a winner. After each round, either the player collects 1 point or the computer collects 1 point, depending on if the player guessed the word or not. Every time a word was guessed correctly, or the player lost all of their lives (determined by the checkRoundStatus() function) the newRound() function would run. If the player guessed the word, the player score would increase by 1. If not, the computer score would increase by 1.  Within the function is an if statement, to check if the round number has reached to 8. If so, the gameOver() function would run. This function sets all of the info values to null, and unhides the 'game over' popup. If the player score is higher than the computer score, then the text in the popup tells the user they won, and if their score is lower, it tells them they lost.
+
 ## My favourite functions
+
+> It's hard to say which function is my favourite, but I would probably choose the updateScoreBoard() function. It is longwinded, and potentially could have been done in a much simpler way, however I learnt a lot by writing it and I got the desired outcome, so I suppose it's the one I was most happy about working!
+
+> It is a function that includes 3 nested functions and 2 for loops which do the following:
+- nth_occurence() finds the index of every occurance of the "'" character in my string of datetimes that I pulled from the local storage, and transformed to replace any unuseful characters with the "'" character.
+- populateDL() then iterates through the string and pulls out the datetimes, and pushes them into a new array.
+- the first for loop popualtes an array with objects that includes three value pairs for the datetime, player score and computer score. This way, the relevant data is grouped together nicely.
+- the comp() function checks through each players score in each object in the array, and checks if the first score is higher or lower than the second score. As I want to sort by descending order, If a was greater than b, I would give it a value of -1, so it would be shifted to the bottom of the 'list'. Then when this was sorted, it would move to the top.
+- Then, for every object in the array, I create three new divs containing the relevant information side-by-side in the high scores table.
 
 
 ## My documentation on building the game
