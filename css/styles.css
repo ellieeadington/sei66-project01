@@ -32,7 +32,7 @@ header {
 .game {
     background-color:#c8c7c6;
     height: 600px;
-    width: 60%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     align-content:flex-end;
@@ -60,12 +60,13 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin-left: 5%;
     font-size: 16px;
 }
 
 .lives {
-    width: 35%;
+    width: 38%;
 }
 
 .info-desc {
@@ -135,10 +136,11 @@ header {
 .popup {
     background-color: white;
     position: absolute;
-    width: 540px;
+    width: 400px;
     height: 200px;
-    margin-left: 15%;
-    margin-top: 8%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     box-shadow: 5px 10px #888888;
     border-radius: 5px;
 }
@@ -171,10 +173,17 @@ button {
     color: #d8d6d5;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
 
+    header {
+        height: 68px;
+        font-size: 30px;
+    }
+    
+    
     .game {
-        height: 80%;
+        height: 550px;
+        width: 80%;
     }
 
     .info {
@@ -186,15 +195,28 @@ button {
         display: flex;
         justify-content: center;
         width: 100%;
+        margin-top: 0;
+        padding-bottom: 10px;
     }
 
+    #hangman-drawing {
+        height: 250px;
+        width: 300px;
+        border: 1px solid black;
+    }
     .letter {
         height: 30px;
         width: 30px;
     }
 
+    .choose-letter {
+        width: 100%;
+    }
+
     .popup {
         font-size: 14px;
+        height: 20%;
     }
 }
+
 
