@@ -76,7 +76,7 @@ function updateScoreBoard() {
 
   // creates new elements for each set of datetime & scores and appends to new divs
   for (let i = 0; (i < scoreArr.length && i < 10); i++) {
-    let newDateDiv = `<div class="ps">${scoreArr[i].d}`;
+    let newDateDiv = `<div class="dt">${scoreArr[i].d}`;
     let newpsDiv = `<div class="ps">${scoreArr[i].ps}`;
     let newcsDiv = `<div class="cs">${scoreArr[i].cs}`;
 
