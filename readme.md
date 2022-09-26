@@ -1,6 +1,6 @@
 # project1-hangman
 
-## Description Features
+## Description
 
 > This was my first project completed in week 3 of the course. I created a simple player vs computer game of hangman. Includes a home screen that logs the players high-scores and links to the game. Game includes 7 rounds of increasing difficulty. A winner is determined at the end of the 7 rounds.
 
