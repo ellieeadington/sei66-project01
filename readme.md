@@ -1,87 +1,65 @@
-# project1-hangman
+# SEI Project-01
 
-## Description
+## Goal
 
-> This was my first project completed in week 3 of the course. I created a simple player vs computer game of hangman. Includes a home screen that logs the players high-scores and links to the game. Game includes 7 rounds of increasing difficulty. A winner is determined at the end of the 7 rounds.
+>The brief was to create a game utilising the tools and technologies we learned during the first 2 weeks. The timeframe for the project was 1 week, and it was a solo project.
+## Team Members
 
-## Deployment Link
+>Solo project
+## Timeframe
 
-> <a href="https://github.com/ellieeadington/hangman">Here</a>
-
-## Getting Stated/Code Installation
-
-> N/A
-
-## Timeframe & Working Team
-
->This project was completed over 1 week, and I was the sole contributor to the game.
-
+>8 days
 ## Technologies used
 
 > - CSS
 > - HTML
 > - JS
 > - JQuery
+## Hangman
 
+<img src="images\hangman.png">
 
-## Brief
+> This was my first project completed in week 3 of the course. I created a simple player vs computer game of hangman. Includes a home screen that logs the players high-scores and links to the game. Game includes 7 rounds of increasing difficulty. A winner is determined at the end of the 7 rounds.
 
->The brief was to create a game utilising the tools and technologies we learned during the first 2 weeks. The timeframe for the project was 1 week, and it was a solo project.
+## Getting Stated/Code Installation
 
-## Technical requirements:
-
-> - Include separate HTML / CSS / JavaScript files
-> - Stick with KISS (Keep It Simple Stupid) and DRY (Don't Repeat Yourself) principles
-> - Use JavaScript and/or jQuery for DOM manipulation
-> - Deploy your online, where the rest of the world can access it
-> - Use semantic markup for HTML and CSS (adhere to best practices)
-> - Have well-formatted, and well-commented code
-
-
-## Necessary deliverables:
-
-> - A working website, built by myself
-> - A link to my hosted working website in the URL section of my Github repository
-> - A git repository hosted on Github, with a link to my hosted website, and frequent commits dating back to the very beginning of the project.
-> - A README.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, any other useful information etc.
-
-
+> N/A
 ## Planning
 
-> The first stage in my planning was to create a wireframe using Figma. In this document, I drew the initial wireframe of the game, and noted key features that I would like my game to include <a href ="https://www.figma.com/file/n33FCJ6FcWIYjeCRN3ccB6/Project-1-Ideation---Hangman?node-id=0%3A1">linked here</a>
+### Ideation Stage & Wireframe
 
-<img src="images\firstwireframe.PNG">
-
->Next, I created my wireframe using HTML and CSS, which you can view in the document, dated 19/08/2022.
+> The first stage in my planning was to create a wireframe using Figma. In this document, I drew the initial wireframe of the game, and noted key features that I would like my game to include.
 
 <img src="images\SEI-66 Project 1 Wireframe.PNG">
 
 ## Build/Code Process
 
-### Creating my word arrays:
+### Creating my word arrays
+
 >First I decided to start by building 4 arrays of words, and a function to randomly generate a word from each array. I didn't know exactly what conditions I wanted the words to meet for each round, so I built 4 arrays of five, six, seven and eight letter words. This would be more than enough to get me started.
 
-### Random word generator functions:
+### Random word generator functions
 
-```javascript 
+```js
 let randomSix = () => {return sixLetters[Math.floor(Math.random() * sixLetters.length)]}
 let randomSeven = () => {return sevenLetters[Math.floor(Math.random() * sevenLetters.length)]}
 let randomEight = () => {return eightLetters[Math.floor(Math.random() * eightLetters.length)]}
 ```
 
 ### The wireframe
+
 > After messing around with my wireframe and brainstorming, I decided that I wanted my game to display differently. I wanted my game to include 5 main sections:
 
-### Choose Letters Zone
+> - Choose Letters Zone
 > - Hangman
 > - Word Zone
 > - Discard Zone
 
-I knew that I needed to build a home page so that the exit functionality worked, and it would allow for the possibility of allowing 2 people to play the game. As I thought it more important to get the game working first, I left this out for now.
+>I knew that I needed to build a home page so that the exit functionality worked, and it would allow for the possibility of allowing 2 people to play the game. As I thought it more important to get the game working first, I left this out for now.
 
-I felt that a sensible place to start was to create my logic for how the game will know when the player has made a correct guess or an incorrect guess once the word for the round has been generated.
+>I felt that a sensible place to start was to create my logic for how the game will know when the player has made a correct guess or an incorrect guess once the word for the round has been generated.
 
-The player must pick a letter, so I created an event listener so that when the player clicks a letter, the code iterates through the word to check for a match(es), then moves the letter to the correct position (positions) or moves it to the discard pile. To do this, the code:
+>The player must pick a letter, so I created an event listener so that when the player clicks a letter, the code iterates through the word to check for a match(es), then moves the letter to the correct position (positions) or moves it to the discard pile. To do this, the code:
 
 > - First gets the class of the letter that the player clicks - e.g. (a)
 > - Iterates through the word to check where there is a match.
@@ -91,7 +69,7 @@ The player must pick a letter, so I created an event listener so that when the p
 
 ### My first function:
 
-```javascript 
+```js
 let sixLetterWord = randomSix().toUpperCase();
 console.log(sixLetterWord);
 
@@ -121,11 +99,12 @@ $('.choice').click(function() {
 }); 
 ```
 ### Building the Hangman
+
 > First I tried building the individual components of the hangman using CSS which I found to be difficult. I then decided to read up on using JS functions working with an HTML Canvas, which so far has been difficult! I have managed to successfully create one line but the x, y coordinates did not seem to be doing what I wanted them to do. but I got there in the end!
 
 > I wanted to avoid repetition of some of the statements so I tried to build a function to make the code more DRY that could create each line / head of my hangman by taking in x,y coordinates.
 
-``` javascript     
+``` js  
     function draw(mtX,mtY, ltX, ltY ) {
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
@@ -151,7 +130,7 @@ let rightLeg = () => {draw(400,350,500,450)}
 ```
 
 
-``` javascript 
+```js
     function head() {
     canvas = document.querySelector('#hangman-drawing');
     ctx = canvas.getContext('2d');
@@ -167,13 +146,13 @@ let rightLeg = () => {draw(400,350,500,450)}
 
 > In order to build my hangman sequentially as each incorrect guess was made, I created an array of each function so that it could be iterated through and called appropriately.
 
-``` javascript 
+``` js
 const hangman = [gallowsBottom,gallowsPole,gallowsTop, gallowsSupport, rope,head,neck,body,leftArm, rightArm,leftLeg, rightLeg];
 ```
 
 > Next I created an index that would increase by 1 for every incorrect guess, and would be used to draw the line at that index whenever an incorrect guess was made:
 
-``` javascript
+```js
 let sixLetterWord = randomSix().toUpperCase();
 let incorrectGuesses = -1; // <---------- index var
 
@@ -200,7 +179,7 @@ $('.choice').click(function() {
 
 > Next I decided to make the lives decrease with every incorrect guess. First I created the array, and then displayed it without the commas to the user.
 
-``` javascript
+``` js
 let lives = ['❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️','❤️'];
 $('.display-lives').text(lives.join(''));
 ```
@@ -213,6 +192,7 @@ $('.display-lives').text(lives.join(''));
 ```
 
 ### Ending the round once the player has won or lost
+
 > First I needed to include a function that checked if the word had been guessed with each letter choice. I set the player and computer score variables to 0 at the start of the game. Then ran the following function each time a guess was made.
 
 ``` js
@@ -226,10 +206,11 @@ let computerScore = 0;
         computerScore += 1;
         $('.computerScore').text(computerScore);
     } else {}
-```    
+```
 > I was encountering problems with this code running before the last letter was placed in the word zone, so I decided to come back to this later.
 
 ### Changing elements of the game
+
 > I realised that there was no need for the 'discard zone' given that it would be obvious once a letter had been chosen incorrectly, as the tile could be highlighted in red, for example, in the 'choose letter zone'. I decided first to remove the relevant HTML, CSS and JS, and then restructure my game so that I was happy with all of the components and the layout. I got slightly carried away with some of the styling of the game, as it was a nice break from writing the logic - haha! I had to update my canvas JS draw coordinates too. It was very difficult to get the horizontal and vertical lines to appear to be the same width, so I had to create two draw functions, one that drew thicker lines. Code below:
 
 ``` js
@@ -258,11 +239,15 @@ function drawThick(mtX,mtY, ltX, ltY ) {
     
 }
 ```
+
 >This was the look of my game once I finished:
+
 <img src="images\hangman.png">
 
-### Showing incorrect letter guesses in the 'choose letter zone':
+### Showing incorrect letter guesses in the 'choose letter zone'
+
 > Now that I no longer have the 'discard zone' I needed to create a way for the user to know that the letters they chose were incorrect. I added this into my code in the case of an incorrect guess being made:
+
 ``` js
 $('.letters > .letter').click(function() { 
 
@@ -382,6 +367,7 @@ function newRound() {
 > Then I removed the class once the round had stopped in the checkRoundStatus() function, and added it back in in the newRound() function.
 
 ### Reset Canvas function
+
 > I added a function to clear the canvas whenever a round ends:
 
 ``` js
@@ -422,15 +408,18 @@ $('.letters').on('click', '.choose' ,function() {
 });
 ```
 
-### Pop Up:
+### Pop Up
+
 > I now want to include a pop up that tells the user the status of the round, and gives them an option to click a button to continue. After that, I will then update the word arrays, so that each difficulty level has its own array of words to choose from, based on certain conditions. There are other conditions I needed to check for too, such as when the last round has been played, and then decide what happens when the game is over. I created two popups, one for when the user loses and one for when they win. Set z index to -1;
 
 > When the round ended, I switched the z index to 1 for the respective popUps depending on the outcome of the game. created an event listener for the popup so when the user clicks continue, the popup disappears. added a ‘p’ tag with classes of 'wonText' and 'lostText' and updated these in the checkRoundStatus function. E.g.
+> 
 ``` js
  $('.wonText').text(`The word was ${sixLetterWord}`);
         $('.wonRound').css("z-index","1");
 ```
-### Creating my final word arrays:
+### Creating my final word arrays
+
 > I decided I wanted 7 rounds so there would never be a draw, and determined what the conditions the words chosen within each round must meet, so I created my list of words between 5 and 9 letters in a google sheet, used formulas to filter them for each round, used concatenation to push them into arrays and added them into my js file. Sheet linked <a href="https://docs.google.com/spreadsheets/d/1jpsbb1sNimso9Y1-Ci903mLQZCGnRS81w8l61reBdIY/edit?usp=sharing">here</a> to show logic.
 
 > - Round1 = 5 letter words - no repeating letters
@@ -456,9 +445,8 @@ let seventhWord = () => {return round7[Math.floor(Math.random() * round7.length)
 const gameWords = [firstWord,secondWord,thirdWord,fourthWord,fifthWord,sixthWord,seventhWord];    
 ```
 
-> I then set the word for the game to the first item in the array and increased the index every time a round was completed.
+> I then set the word for the game to the first item in the array and increased the index every time a round was completed. Now, I had to set the length of the number of tiles that appeared in the wordZone for each round. I created a new function to be run every time the round ended:
 
-> Now, I had to set the length of the number of tiles that appeared in the wordZone for each round. I created a new function to be run every time the round ended:
 ``` js
 function createTiles() {
     $('.word').html('');
@@ -470,15 +458,9 @@ function createTiles() {
     }
   }
   ```
+### Checking if the game has ended
 
-### I then finalised my user stories:
- <a href="https://docs.google.com/spreadsheets/d/1jpsbb1sNimso9Y1-Ci903mLQZCGnRS81w8l61reBdIY/edit?usp=sharing">Linked here</a>
-
-### Checking if the game has ended:
-
-  > First I created a gameOver popup and gave it a z-index of -1.
-
-  > Next I created a function that would display the popup with the correct info in once a game had ended:
+> First I created a gameOver popup and gave it a z-index of -1. Next I created a function that would display the popup with the correct info in once a game had ended:
 
   ``` js
   function gameOver() {
@@ -491,6 +473,7 @@ function createTiles() {
         }
     } 
 ```
+
 > In the newRound() function, I added the gameOver function in an if statement (might go back and refractor later as this could maybe be a bit hacky):
 
 ``` js
@@ -532,6 +515,7 @@ function newRound() {
 <img src="images\hangmanHomePage.PNG">
 
 ### Created animation for new round values
+
 ``` js
 function animation() {
     let box2 = $('.info-value');
@@ -548,17 +532,13 @@ function animation() {
 
 ### Local storage
 
-> Next I worked on logging the game number, player score and computer score at the end of the game in local storage. I tested it by getting the items and checking that they were pulling correctly into my document. I added this as a nested function within my gameOver() function, so that it would run whenever the game ended
-
->I then created a separate js file to link to the homepage, to avoid the main js file running when on home, as well as updating my scripts to include 'defer'.
+> Next I worked on logging the game number, player score and computer score at the end of the game in local storage. I tested it by getting the items and checking that they were pulling correctly into my document. I added this as a nested function within my gameOver() function, so that it would run whenever the game ended. I then created a separate js file to link to the homepage, to avoid the main js file running when on home, as well as updating my scripts to include 'defer'.
 
 ### Scoreboard on my homepage
 
-> I spent a while trying to work out how to transform the resulting strings into arrays, created functions in this separate js file to do so by grabbing data from localStorage and transforming it. As the data were in three string formats, I worked on transforming them into arrays so that I could display them correctly in my homepage.
+> I spent a while trying to work out how to transform the resulting strings into arrays, created functions in this separate js file to do so by grabbing data from localStorage and transforming it. As the data were in three string formats, I worked on transforming them into arrays so that I could display them correctly in my homepage. I then used a grid layout to create my scoreboard which holds up to 10 scores in highest score order (want to also sort by date second, will see if I can do that).
 
-> I then used a grid layout to create my scoreboard which holds up to 10 scores in highest score order (want to also sort by date second, will see if I can do that).
-
-### Bug checking
+### Bug fixing
 > I checked for bugs by playing the game, and noticed that my checkRoundStatus() function needed rearranging, so that the game info did not update and a new word would not be generated until the player pressed continue.
 
 ### Displaying datetime played in Scoreboard rather than game number
@@ -571,12 +551,9 @@ function animation() {
 
 ### Responsive CSS
 
-> I then worked on using media queries to ensure that my game was responsive and could be played on a smaller screen.
-
-> After I changed my css to make it more dynamic as well as responsive, I had to go back and refractor some of my code. For example, the animate round values function:
+> I then worked on using media queries to ensure that my game was responsive and could be played on a smaller screen. After I changed my css to make it more dynamic as well as responsive, I had to go back and refractor some of my code. For example, the animate round values function:
 
 ``` js
-
 function animation() {
     let values = $('.info-value');
 
@@ -587,7 +564,7 @@ function animation() {
 }
 ```
 
-## Challengers
+## Challenges
 
 ### Working through building the game in a logical order
 > I found it tempting to flit between steps; building my game before completing my user stories, working on the look of the game before completing all of the logic.
@@ -606,21 +583,19 @@ function animation() {
 
 ## Key Learnings / Takeaways
 
-### Working through the ideation and build logically saves time
-> Really cementing exactly how I want the game to look and function, along with generating user stories  initially will make the build process a lot smoother.
+### Plan solidly
+> Really cementing exactly how I want the game to look and function, along with generating more thorough user stories initially will make the build process a lot smoother. Going forward, I would have planned the build more rigorously to ensure that I spent less time going back and editing and updating my code to satisfy new requirements as I developed my ideas.
 
-### Comment as you go and analyse
-> Commenting through your code as you go and analysing what you have written will help you understand where you have made mistakes / done something illogically. Similarly, it will help you streamline your code as you go. When I began writing up my presentation, I spotted some issues with my code that needed fixing.
+### Read through code with fresh eyes
+> At the end of the project I read through all of my code again and added pseudocode to support my presentation, and this really helped me to understand where I had made errors or could have written more elegant code, and it helped me to refactor my code.
 
 ## Bugs
 > The datetime logs approx 1 min before the game ends, and the function is run to store and access the datetime.
 
 ## Future Improvements
 
-> - Making the game 2 player
+> - Giving the user the option to play the game with another user.
 > - Saving game data in local server in case of accidentally closing down the page.
 > - Sorting the scores by datetime as well as highest scores
-> - Fix up the CSS!
-> - Providing a clue for the user
-> - Word categories
-> - Improve the animations and interactivity - such as adding a mouseover/mouseleave event > > - listener
+> - As this was our first project, we were not able to use third-party APIs or have a database connection meaning that the random words generated for each round were hardcoded, and I was not able to provide clues for the user. If I were to continue working on this game I would definitely amend this.
+> - Improve the animations and interactivity - such as adding a mouseover/mouseleave event listener
