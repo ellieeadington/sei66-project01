@@ -11,10 +11,11 @@
 >8 days
 ## Technologies used
 
-> - CSS
-> - HTML
 > - JS
 > - JQuery
+> - CSS
+> - HTML
+
 ## Hangman
 
 <img src="images\hangman.png">
