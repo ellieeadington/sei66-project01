@@ -24,9 +24,6 @@
 
 Deployed link: https://ellieeadington.github.io/sei66-project01/
 
-## Getting Stated/Code Installation
-
-> N/A
 ## Planning
 
 ### Ideation Stage & Wireframe
